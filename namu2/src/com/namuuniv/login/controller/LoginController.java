@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet  {
 		reqUser.setPassword(request.getParameter("password"));
 
 		HttpSession session = request.getSession();
-
+		
 		user = LoginDAO.getLogin(reqUser);
 
 		// 로그인 실패시 로그인 Redirect
