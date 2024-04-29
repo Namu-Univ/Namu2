@@ -24,7 +24,7 @@
 			<c:forEach items="${list}" var="notice">
 				<tr>
 					<td>${notice.id }</td>
-					<td><a href="noticeDetail?id=${notice.id}">${notice.title}</a></td>
+					<td><a href="noticeDetail?id=${notice.id}&cPage=${pvo.nowPage}">${notice.title}</a></td>
 					<td>${notice.staffName}</td>
 					<td>
 						<c:if test="${not empty notice.created}">
@@ -64,13 +64,13 @@
 							<a href="noticeList?cPage=${pvo.endPage + 1}">&raquo;</a>
 						</c:if>
 						<c:if test="${pvo.endPage >= pvo.totalPage}">
-							<span class="disable">&raquo;</span>
+							<span class="disabled">&raquo;</span>
 						</c:if>
 					</div>
 				</td>
 				<td>
 					<c:if test="${isStaff }">
-						<button onclick="location.href='writeNotice'">글작성</button>
+						<button onclick="location.href='noticeWrite'">글작성</button>
 					</c:if>
 				</td>
 			</tr>

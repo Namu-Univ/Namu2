@@ -28,8 +28,10 @@
 	
 	<!-- 공지글 1개 조회(상세보기) -->
 	<select id="noticeDetail" parameterType="int" resultType="com.namuuniv.vo.NoticeVO">
-		SELECT ID, STAFF_ID, TITLE, CONTENT, VIEWS, CREATED
-		FROM NOTICE WHERE ID = #{id}
+		SELECT N.ID, N.TITLE, N.CONTENT, N.VIEWS, N.CREATED, S.NAME AS staffName
+		FROM NOTICE N
+		JOIN STAFF S ON N.STAFF_ID = S.ID
+		WHERE N.ID = #{id}
 	</select>
 	
 	<!-- 공지글 조회수 증가 -->
@@ -39,4 +41,22 @@
 		WHERE ID = #{id}
 	</update>
 
+	<!-- 공지글 작성 -->
+	<insert id="noticeWrite" parameterType="com.namuuniv.vo.NoticeVO">
+		INSERT INTO NOTICE (ID, STAFF_ID, TITLE, CONTENT, VIEWS, CREATED)
+		VALUES (NOTICE_SEQ.NEXTVAL, #{staffId}, #{title}, #{content}, 0, SYSDATE)	
+	</insert>
+	
+	<!-- 공지글 수정 -->
+	<update id="updateNotice" parameterType="com.namuuniv.vo.NoticeVO">
+		UPDATE NOTICE 
+		SET TITLE = #{title},
+		    CONTENT = #{content}
+		WHERE ID = #{id}
+	</update>
+	
+	<!-- 공지글 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM NOTICE WHERE ID = #{id}
+	</delete>
 </mapper>

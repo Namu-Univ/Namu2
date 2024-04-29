@@ -45,4 +45,44 @@ public class NoticeDAO {
 		return null;
 	}
 	
+	// 공지글 작성
+	public static int noticeWrite(NoticeVO nvo) {
+		try (SqlSession ss = DBService.getFactory().openSession(true)) {
+			return ss.insert("notice.noticeWrite", nvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	// 조회수 증가
+	public static int updateView(int id) {
+		try (SqlSession ss = DBService.getFactory().openSession(true)) {
+			return ss.update("notice.updateViews", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	// 공지글 수정
+	public static int updateNotice(NoticeVO nvo) {
+		try (SqlSession ss = DBService.getFactory().openSession(true)) {
+			return ss.update("notice.updateNotice", nvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	// 공지글 삭제
+	public static int deleteNotice(int id) {
+		try ( SqlSession ss = DBService.getFactory().openSession(true)) {
+			return ss.delete("notice.deleteNotice", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
 }
