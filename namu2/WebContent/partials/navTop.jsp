@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <div class="top">
-    <a href="#">로그인</a>
+	<a href="logout">로그아웃</a>
 </div>
 <div class="nav">
     <div class="logo">
