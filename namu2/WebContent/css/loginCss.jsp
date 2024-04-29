@@ -11,7 +11,7 @@ body {
 	width:100%;
  	height:100%;
 	justify-content: center;
-	background-image: url("/namu/css/img/login_background.png");
+	background-image: url("/namu2/css/img/login_background.png");
 }
 
 #loginForm {

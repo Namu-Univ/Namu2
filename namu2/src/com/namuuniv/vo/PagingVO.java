@@ -31,7 +31,7 @@ public class PagingVO {
 		
 		// 페이징 블록 계산
 		nowBlock = (nowPage - 1) / pagePerBlock + 1;
-		beginPage = (nowBlock - 1) / pagePerBlock + 1;
+		beginPage = (nowBlock - 1) * pagePerBlock + 1;
 		endPage = nowBlock * pagePerBlock;
 		if (endPage > totalPage) {
 			endPage = totalPage;

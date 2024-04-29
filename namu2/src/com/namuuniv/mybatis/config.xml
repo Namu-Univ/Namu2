@@ -32,6 +32,7 @@
   <mappers>
    	<mapper resource="com/namuuniv/mybatis/mapper.xml" />
    	<mapper resource="com/namuuniv/mybatis/eduMapper.xml" />
+	  <mapper resource="com/namuuniv/mybatis/noticeMapper.xml" />
   </mappers>
   
 </configuration>
