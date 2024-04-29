@@ -13,7 +13,7 @@ public class ProcessCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String check = request.getParameter("check");
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		int idx = Integer.parseInt(request.getParameter("idx")); // 형변환
 		if (check.equals("approve")) {
 			EduStatusDAO.approve(idx);
 		} else if (check.equals("reject")) {

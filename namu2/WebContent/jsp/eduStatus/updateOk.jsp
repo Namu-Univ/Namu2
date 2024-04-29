@@ -4,7 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ㅇ</title>
+<title>학생 휴학 신청 승인/반려 (승인페이지)</title>
+<style>
+
+/* 	
+1.CSS시트 및 Top nav , side nav 적용처리
+2.수정실패 페이징 처리 	
+ */
+
+</style>
 </head>
 <script>
 	alert("수정완료~~");

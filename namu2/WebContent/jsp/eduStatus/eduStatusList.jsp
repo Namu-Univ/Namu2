@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>학생 휴학 신청 목록 조회</title>
+<style>
+
+/* 	CSS시트 및 Top nav , side nav 적용처리 */
+
+</style>
 </head>
 <body>
 	<c:forEach var="listData" items="${list }">

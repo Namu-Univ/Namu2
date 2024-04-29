@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>학생 휴학신청서 ${absence.idx }</title>
+<style>
+
+/* 	CSS시트 및 Top nav , side nav 적용처리 */
+
+</style>
 </head>
 <body>
 	${absence.idx }

@@ -45,7 +45,6 @@ public class EduStatusDAO {
 	    return false;
 	}
 
-	
 	//반려시
 	public static boolean reject(int idx) {
 	    try (SqlSession ss = DBService.getFactory().openSession()) {
@@ -61,5 +60,6 @@ public class EduStatusDAO {
 	    }
 	    return false;
 	}
+	
 
 }

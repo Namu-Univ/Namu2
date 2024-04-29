@@ -30,15 +30,15 @@ public class EduStatusController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
-		
-//		 직원이 아닐 경우 교수나,학생 같은 경우에는 페이지 접근이 안되게 다른 페이지로 redirect하는 함수구현
+
+		// 직원이 아닐 경우 교수나,학생 같은 경우에는 페이지 접근이 안되게 다른 페이지로 redirect하는 함수구현
 		if (session.getAttribute("staff") == null) {
 			response.sendRedirect("mypage");
 			return;
 		}
-		
+
 		String type = request.getParameter("type");
 		Command command = commands.get(type);
 		String pat = command.exec(request, response);
