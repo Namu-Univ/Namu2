@@ -15,6 +15,7 @@
 		<typeAlias alias="StaffVO" type="com.namuuniv.vo.StaffVO"/>
 		<typeAlias alias="UsersVO" type="com.namuuniv.vo.UsersVO"/>
 		<typeAlias alias="EduStatusVO" type="com.namuuniv.vo.EduStatusVO"/>
+		<typeAlias alias="SubjectVO" type="com.namuuniv.vo.SubjectVO"/>
 	</typeAliases>
 
   <environments default="development">
@@ -33,6 +34,7 @@
    	<mapper resource="com/namuuniv/mybatis/mapper.xml" />
    	<mapper resource="com/namuuniv/mybatis/eduMapper.xml" />
 	  <mapper resource="com/namuuniv/mybatis/noticeMapper.xml" />
+	<mapper resource="com/namuuniv/mybatis/gradeMapper.xml" />
   </mappers>
   
 </configuration>

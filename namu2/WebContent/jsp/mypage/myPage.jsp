@@ -52,7 +52,7 @@
 	UsersVO user = (UsersVO) session.getAttribute("user");
 	String role = user.getRole();
 %>
-<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+<jsp:include page="../../partials/ProNavTop.jsp"></jsp:include>
     <div class="mid">
     <jsp:include page="../../partials/sideNav.jsp"></jsp:include>
         <!-- Page content -->
