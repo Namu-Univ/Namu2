@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.namuuniv.dao.GradeDAO;
-import com.namuuniv.vo.SubjectVO;
+import com.namuuniv.vo.ProSubjectVO;
 import com.namuuniv.vo.UsersVO;
 
 @WebServlet("/subject")
@@ -28,9 +28,9 @@ public class SubjcetController extends HttpServlet {
 		System.out.println(role);
 		
 		if(role.equals("professor")) {
-			List<SubjectVO> subList = GradeDAO.subjectList(id);
-			request.setAttribute("subList", subList);
-			System.out.println(subList);
+			List<ProSubjectVO> proSubList = GradeDAO.proSubList(id);
+			request.setAttribute("proSubList", proSubList);
+			System.out.println(proSubList);
 			request.getRequestDispatcher("jsp/grade/subject.jsp").forward(request, response);
 		}
 		

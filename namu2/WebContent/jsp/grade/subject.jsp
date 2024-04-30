@@ -35,7 +35,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${subList}" var="subject">
+					<c:forEach items="${proSubList}" var="proSubList">
 						<tr onclick="location.href='enrollStu'">
 							<td>${subject.id }</td>
 							<td>${subject.year }</td>

@@ -3,12 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="grade">
-	<select id="subjectList" resultType="SubjectVO">
-		SELECT S.ID, D.NAME AS DEPT_NAME, S.DEPT_ID, S.PROFESSOR_ID, 
+	<!-- (교수)강의 - 내 강의 조회 -->
+	<!-- 다시 보기 -->
+	<select id="proSubList" resultType="ProSubjectVO">
+		SELECT D.NAME AS DEPT_NAME, S.PROFESSOR_ID, 
 			   S.NAME, S.ROOM, S.TYPE, S.YEAR, S.SEMESTER, S.TIME, S.GRADES
 		FROM SUBJECT S, DEPARTMENT D
 		WHERE S.DEPT_ID = D.ID 
 		AND S.PROFESSOR_ID = #{id}
 	</select>
-
+	
+	<!-- (교수)강의 - 수강중인 학생 목록 -->
+	<select id="enrolStuList" resultType="EnrolStuVO">
+	SELECT S.ID AS STU_ID, T.YEAR AS YEAR, T.SEMESTER AS SEMESTER, T.NAME AS SUB_NAME, T.ROOM AS ROOM
+	FROM STUDENT S, SUBJECT T, ENROLMENT E
+	WHERE S.ID = E.STU_ID
+	  AND E.SUB_ID = T.ID
+	  AND T.ID = #{id};
+	</select>
+	
+	<!-- (학생)강의 - 내 강의 조회 (성적제외)-->
+	<select id="stuSubList">
+		SELECT S.ID AS STU_ID, T.YEAR AS YEAR, T.SEMESTER AS SEMESTER, T.NAME AS NAME, G.RATE  
+		FROM STUDENT S, SUBJECT T, ENROLMENT E, GRADE G
+		WHERE S.ID = E.STU_ID
+		AND E.SUB_ID = T.ID
+		AND G.STU_ID = S.ID
+		AND G.SUB_ID = T.ID
+		AND S.ID = #{id};
+	</select>
 </mapper>

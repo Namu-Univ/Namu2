@@ -1,6 +1,6 @@
 package com.namuuniv.vo;
 
-public class SubjectVO {
+public class ProSubjectVO {
 	private int id;
 	private String deptName;
 	private int deptId;
