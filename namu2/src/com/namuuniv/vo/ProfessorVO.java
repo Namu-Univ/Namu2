@@ -12,6 +12,8 @@ public class ProfessorVO {
 	private String tel;
 	private Date hireDate;
 	private int deptId;
+	private String deptName;
+	private String college;
 	
 	public int getId() {
 		return id;
@@ -61,7 +63,18 @@ public class ProfessorVO {
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
 	}
-	
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
+	}
 	@Override
 	public String toString() {
 		return "ProfessorVO [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", gender=" + gender
