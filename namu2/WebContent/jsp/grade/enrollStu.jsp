@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>강의</title>
-<!-- <link href="../css/frame.css" rel="stylesheet" type="text/css"> -->
+<title>수강중인 학생</title>
 <jsp:include page="../../css/frameCss.jsp"/>
 </head>
 <body>
@@ -20,18 +19,17 @@
 		</div>
         <!-- Page content -->
         <div class="main">
-
 			<table border="1">
 				<thead>
 					<tr>
 						<th>번호</th>
 						<th>연도</th>
 						<th>학기</th>
-						<th>학과</th>
 						<th>강의명</th>
 						<th>강의실</th>
 						<th>이수학점</th>
 						<th>강의시간</th>
+						<th>성적</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -49,6 +47,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			
 		</div>
 	</div>
 </body>
