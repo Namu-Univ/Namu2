@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>휴학 신청</title>
-<jsp:include page="../../css/frameCss.jsp"></jsp:include>
+<jsp:include page="../../css/frameCss.jsp"/>
 <style>
 	.container {
 		margin: 30px auto 0;
@@ -38,9 +38,9 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+	<jsp:include page="../../partials/navTop/studentNavTop.jsp"/>
     <div class="mid">
-    <jsp:include page="../../partials/sideNav_semesteroff.jsp"></jsp:include>
+    <jsp:include page="../../partials/sideNav/sideNav_semesteroff.jsp"/>
     			<div class="maintop">휴학 신청</div>
 			
 			<!-- Page content -->

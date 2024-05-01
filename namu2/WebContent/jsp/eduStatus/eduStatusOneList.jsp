@@ -76,9 +76,9 @@ header {
 </style>
 </head>
 <body>
-	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 	<div class="mid">
-		<jsp:include page="../../partials/sideNav.jsp"></jsp:include>
+		<jsp:include page="../../partials/sideNav/sideNav_staffEduStatus.jsp"/>
 		<!-- 구분선 추가 -->
 		<table>
 			<tr>

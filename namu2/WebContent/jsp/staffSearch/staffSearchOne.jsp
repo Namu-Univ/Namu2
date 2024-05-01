@@ -52,9 +52,9 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 	<div class="mid">
-	<jsp:include page="../../partials/sideNav_staffSearch.jsp"></jsp:include> 
+	<jsp:include page="../../partials/sideNav/sideNav_staffSearch.jsp"/> 
 			<div class="maintop">교직원 상세 정보</div>
 			
 			<!-- Page content -->
