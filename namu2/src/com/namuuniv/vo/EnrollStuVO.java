@@ -12,7 +12,8 @@ public class EnrollStuVO {
 	private String tel;
 	private String gender;
 	private String subName;
-	
+	private int year;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -74,11 +75,18 @@ public class EnrollStuVO {
 		this.subName = subName;
 	}
 	
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	
 	@Override
 	public String toString() {
 		return "EnrollStuVO [userId=" + userId + ", idx=" + idx + ", grade=" + grade + ", semester=" + semester
 				+ ", stuId=" + stuId + ", deptName=" + deptName + ", stuName=" + stuName + ", tel=" + tel + ", gender="
-				+ gender + ", subName=" + subName + "]";
+				+ gender + ", subName=" + subName + ", year=" + year + "]";
 	}
-	
+
 }

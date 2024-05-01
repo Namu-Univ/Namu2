@@ -10,9 +10,11 @@
 <!-- <link href="../css/frame.css" rel="stylesheet" type="text/css"> -->
 <jsp:include page="../../css/frameCss.jsp"/>
 <script>
-	function remSubName(subName) {
+	function remSubName(subName, year, semester) {
 	    document.getElementById('subNameInput').value = subName;
-	    document.getElementById('subNameForm').submit();
+	    document.getElementById('yearInput').value = year;
+	    document.getElementById('semesterInput').value = semester;
+	    document.getElementById('form').submit();
 	}
 </script>
 </head>
@@ -42,11 +44,12 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${proSub}" var="proSub">
-						<!-- Hidden form -->
-						<form id="subNameForm" action="enrollStu" method="GET">
+						<form id="form" action="enrollStu" method="GET">
 						    <input type="hidden" name="subName" id="subNameInput">
+						    <input type="hidden" name="year" id="yearInput">
+						    <input type="hidden" name="semester" id="semesterInput">
 						</form>
-						<tr onclick="remSubName('${proSub.subName}')">
+						<tr onclick="remSubName('${proSub.subName}', '${proSub.year}', '${proSub.semester}')">
 							<td>${proSub.subId }</td>
 							<td>${proSub.year }</td>
 							<td>${proSub.semester }</td>

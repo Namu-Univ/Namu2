@@ -4,6 +4,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import com.namuuniv.mybatis.DBService;
 import com.namuuniv.vo.EnrollStuVO;
+import com.namuuniv.vo.GradeVO;
 import com.namuuniv.vo.ProSubjectVO;
 
 public class GradeDAO {
@@ -27,6 +28,17 @@ public class GradeDAO {
 		}
 		return null;
 	}
-
+	
+	// 성적 입력 가능 여부
+	
+	// 성적 입력
+	public static int insertGrade(GradeVO vo) {
+		try (SqlSession ss = DBService.getFactory().openSession()){
+			return ss.insert("grade.enrollStuList", vo);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

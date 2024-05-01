@@ -28,7 +28,7 @@
 	</select>
 	
 	<!-- 성적 조회 -->
-	<select id="rate" parameterType="String" resultType="EnrollStuVO">
+	<select id="searchRate" parameterType="EnrollStuVO" resultType="EnrollStuVO">
 		SELECT G.RATE 
 		FROM GRADE G, SUBJECT T
 		WHERE G.SUB_ID = T.ID
@@ -36,8 +36,26 @@
 		AND T.NAME = #{subName};
 	</select>
 	
+	<select id="infoGrade" parameterType="EnrollStuVO" resultType="EnrollStuVO">
+		SELECT G.RATE 
+		FROM GRADE G, SUBJECT T
+		WHERE G.SUB_ID = T.ID
+		AND G.STU_ID = #{userId}
+		AND T.NAME = #{subName};
+	</select>
+	
+	<!-- (교수)성적 테이블에 존재여부 확인 -->
+	<select id="selectGrade">
+	
+	</select>
+	
 	<!-- (교수)성적 입력 -->
-
+	<insert id="insertGrade">
+		INSERT INTO GRADE (ID, STU_ID, SUB_ID, ABSENT, 
+			   MID_EXAM, FIN_EXAM, EX_SCORE, RATE) 
+		VALUES (GRADE_SEQ.NEXTVAL, #{gradeId}, #{subID}, 
+			   #{absent}, #{midExam}, #{finExam}, #{exScore}, #{rate});
+	</insert>
 	
 	<!-- (학생)강의 - 내 강의 조회 (성적제외)-->
 	<select id="stuSubList">

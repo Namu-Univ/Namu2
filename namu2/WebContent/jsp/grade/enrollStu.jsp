@@ -9,6 +9,15 @@
 <title>수강중인 학생</title>
 <jsp:include page="../../css/frameCss.jsp"/>
 </head>
+<script>
+	function remStuId(stuId, stuName) {
+	    document.getElementById('stuIdInput').value = stuId; 
+	    document.getElementById('stuNameInput').value = stuName; 
+	    document.getElementById('form').submit();
+	}
+
+</script>
+	
 <body>
 
 <jsp:include page="../../partials/ProNavTop.jsp"></jsp:include>
@@ -19,6 +28,7 @@
 		</div>
         <!-- Page content -->
         <div class="main">
+        	<div></div>
 			<table border="1">
 				<thead>
 					<tr>
@@ -35,17 +45,22 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${enrollStu}" var="enrollStu">
-						<tr onclick="location.href='insertGrade'">
-							<td>${enrollStu.idx }</td>
-							<td>${enrollStu.grade }</td>
-							<td>${enrollStu.semester }</td>
-							<td>${enrollStu.stuId}</td>
-							<td>${enrollStu.deptName }</td>
-							<td>${enrollStu.stuName }</td>
-							<td>${enrollStu.tel }</td>
-							<td>${enrollStu.gender }</td>
-						</tr>
+					    <form id="form" action="infoGrade" method="GET">
+					        <input type="hidden" name="stuId" id="stuIdInput">
+					        <input type="hidden" name="stuName" id="stuNameInput">
+					    </form>
+					    <tr onclick="remStuId('${enrollStu.stuId}', '${enrollStu.stuName}')">
+					        <td>${enrollStu.idx}</td>
+					        <td>${enrollStu.grade}</td>
+					        <td>${enrollStu.semester}</td>
+					        <td>${enrollStu.stuId}</td>
+					        <td>${enrollStu.deptName}</td>
+					        <td>${enrollStu.stuName}</td>
+					        <td>${enrollStu.tel}</td>
+					        <td>${enrollStu.gender}</td>
+					    </tr>
 					</c:forEach>
+
 				</tbody>
 			</table>
 			

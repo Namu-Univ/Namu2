@@ -26,7 +26,13 @@ public class EnrollStuentController extends HttpServlet {
 		int userId = user.getId();
 
 		String subName = request.getParameter("subName");
-	    session.setAttribute("subName", subName);
+		
+		int year = Integer.parseInt(request.getParameter("year"));
+		int semester = Integer.parseInt(request.getParameter("semester"));
+		session.setAttribute("subName", subName);
+	    session.setAttribute("year", year);
+	    session.setAttribute("semester", semester);
+	    
 	    
 	    EnrollStuVO vo = new EnrollStuVO();
 	    vo.setUserId(userId);
