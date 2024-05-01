@@ -54,7 +54,7 @@
 %>
 <jsp:include page="../../partials/navTop.jsp"></jsp:include>
     <div class="mid">
-    <jsp:include page="../../partials/sideNav.jsp"></jsp:include>
+    <jsp:include page="../../partials/sideNav_mypage.jsp"></jsp:include>
         <!-- Page content -->
         <div class="main">
             <div class="rectangle">

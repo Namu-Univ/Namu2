@@ -31,7 +31,7 @@
 <body>
 	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
 	<div class="mid">
-	<jsp:include page="../../partials/sideNav.jsp"></jsp:include> 
+	<jsp:include page="../../partials/sideNav_staffSearch.jsp"></jsp:include> 
 			<div class="maintop">교수 정보 수정</div>
 			
 			<div class="main">
