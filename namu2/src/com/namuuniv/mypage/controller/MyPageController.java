@@ -28,6 +28,7 @@ public class MyPageController extends HttpServlet  {
 		if (role.equals("student")) {
 			StudentVO vo = (StudentVO)session.getAttribute("student");
 			request.setAttribute("vo", vo);
+			session.setAttribute("vo", vo);
 		} else if (role.equals("staff")) {
 			StaffVO vo = (StaffVO)session.getAttribute("staff");
 			request.setAttribute("vo", vo);
@@ -35,7 +36,7 @@ public class MyPageController extends HttpServlet  {
 			ProfessorVO vo = (ProfessorVO)session.getAttribute("professor");
 			request.setAttribute("vo", vo);
 		}
-		request.getRequestDispatcher("jsp/mypage/myPage.jsp").forward(request, response);		
+		request.getRequestDispatcher("jsp/mypage/myPage.jsp").forward(request, response);
 	}
 	
 	@Override

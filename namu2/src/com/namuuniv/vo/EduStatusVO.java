@@ -8,7 +8,7 @@ public class EduStatusVO {
 	private String startYear;
 	private String startSemester;
 	private String finishYear;
-	private String finisthSemester;
+	private String finishSemester;
 	private String approvalStatus;
 	private String reporingDate;
 
@@ -60,12 +60,12 @@ public class EduStatusVO {
 		this.finishYear = finishYear;
 	}
 
-	public String getFinisthSemester() {
-		return finisthSemester;
+	public String getFinishSemester() {
+		return finishSemester;
 	}
 
-	public void setFinisthSemester(String finisthSemester) {
-		this.finisthSemester = finisthSemester;
+	public void setFinishSemester(String finishSemester) {
+		this.finishSemester = finishSemester;
 	}
 
 	public String getApprovalStatus() {
@@ -88,7 +88,7 @@ public class EduStatusVO {
 	public String toString() {
 		return "EduStatusVO [idx=" + idx + ", id=" + id + ", status=" + status + ", startYear=" + startYear
 				+ ", startSemester=" + startSemester + ", finishYear=" + finishYear + ", finisthSemester="
-				+ finisthSemester + ", approvalStatus=" + approvalStatus + ", reporingDate=" + reporingDate + "]";
+				+ finishSemester + ", approvalStatus=" + approvalStatus + ", reporingDate=" + reporingDate + "]";
 	}
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="semesteroff">
+	<!-- 신청서 작성 -->
+	<insert id="application" parameterType="EduStatusVO">
+		INSERT INTO STU_STA (ID, STATUS, START_YEAR, START_SEMESTER, FINISH_YEAR,
+							FINISH_SEMESTER, APPROVAL_STATUS, REPORING_DATE, IDX)
+		VALUES(#{id}, #{status}, #{startYear}, #{startSemester}, #{finishYear}, 
+				#{finishSemester}, #{approvalStatus}, SYSDATE, STU_STA_SEQ.NEXTVAL)
+	</insert>
+	<!-- 학생 본인 휴학 신청 목록 확인 -->
+	<select id="myList" resultType="EduStatusVO">
+		SELECT *
+		FROM STU_STA
+		WHERE ID = #{id}
+		ORDER BY IDX DESC
+	</select>
+</mapper>
