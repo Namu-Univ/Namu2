@@ -71,15 +71,12 @@ header {
 </style>
 </head>
 <body>
-<jsp:include page="../../partials/navTop/staffNavTop.jsp"></jsp:include>
+<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 <div class="mid">
-    <jsp:include page="../../partials/sideNav/staff-EduManagementSideNav.jsp"></jsp:include>
-    <!-- Page content -->
+    <jsp:include page="../../partials/sideNav/sideNav_semesteroff.jsp"/>
+ 	<div class="maintop">교수 조회</div>
     <div class="main">
-        <header>
-            <h1>학생 휴학 관리</h1>
-        </header>
-        <div class="divider"></div> <!-- 구분선 추가 -->
+       
         <table>
             <thead>
                 <tr>

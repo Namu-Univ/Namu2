@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>휴학 신청 목록</title>
-<jsp:include page="../../css/frameCss.jsp"></jsp:include>
-<jsp:include page="../../css/tableCss.jsp"></jsp:include>
+<jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/tableCss.jsp"/>
 </head>
 <body>
-	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+	<jsp:include page="../../partials/navTop/studentNavTop.jsp"/>
     <div class="mid">
-    <jsp:include page="../../partials/sideNav_semesteroff.jsp"></jsp:include>
+    <jsp:include page="../../partials/sideNav/sideNav_semesteroff.jsp"/>
     	<div class="maintop">휴학 신청 목록</div>
 			<div class="main">
 				<table border="1">

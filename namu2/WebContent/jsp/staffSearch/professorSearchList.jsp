@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>교수 조회</title>
-<jsp:include page="../../css/frameCss.jsp"></jsp:include>
-<jsp:include page="../../css/tableCss.jsp"></jsp:include>
+<jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/tableCss.jsp"/>
 <style>
 	form {
 		text-align: center;
@@ -15,9 +15,9 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 	<div class="mid">
-	<jsp:include page="../../partials/sideNav_staffSearch.jsp"></jsp:include> 
+	<jsp:include page="../../partials/sideNav/sideNav_staffSearch.jsp"/> 
 		<div class="maintop">교수 조회</div>
 			<div class="main">
 				<form action="../../SearchProfessor" method="get">
