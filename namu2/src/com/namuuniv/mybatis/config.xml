@@ -15,7 +15,8 @@
 		<typeAlias alias="StaffVO" type="com.namuuniv.vo.StaffVO"/>
 		<typeAlias alias="UsersVO" type="com.namuuniv.vo.UsersVO"/>
 		<typeAlias alias="EduStatusVO" type="com.namuuniv.vo.EduStatusVO"/>
-		<typeAlias alias="SubjectVO" type="com.namuuniv.vo.SubjectVO"/>
+		<typeAlias alias="ProSubjectVO" type="com.namuuniv.vo.ProSubjectVO"/>
+		<typeAlias alias="EnrollStuVO" type="com.namuuniv.vo.EnrollStuVO"/>
 	</typeAliases>
 
   <environments default="development">

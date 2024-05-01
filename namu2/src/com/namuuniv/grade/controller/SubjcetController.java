@@ -24,13 +24,11 @@ public class SubjcetController extends HttpServlet {
 		UsersVO user = (UsersVO) session.getAttribute("user");
 		int id = user.getId();
 		String role = user.getRole();
-		System.out.println(id);
-		System.out.println(role);
-		
+	
 		if(role.equals("professor")) {
-			List<ProSubjectVO> proSubList = GradeDAO.proSubList(id);
-			request.setAttribute("proSubList", proSubList);
-			System.out.println(proSubList);
+			List<ProSubjectVO> proSub = GradeDAO.proSubList(id);
+			request.setAttribute("proSub", proSub);
+			System.out.println(proSub);
 			request.getRequestDispatcher("jsp/grade/subject.jsp").forward(request, response);
 		}
 		

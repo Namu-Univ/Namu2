@@ -4,23 +4,40 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="grade">
 	<!-- (교수)강의 - 내 강의 조회 -->
-	<!-- 다시 보기 -->
 	<select id="proSubList" resultType="ProSubjectVO">
-		SELECT D.NAME AS DEPT_NAME, S.PROFESSOR_ID, 
-			   S.NAME, S.ROOM, S.TYPE, S.YEAR, S.SEMESTER, S.TIME, S.GRADES
+		SELECT S.Id AS SUB_ID, S.YEAR, S.SEMESTER, D.NAME AS DEPT_NAME,
+			   S.NAME AS SUB_NAME, S.ROOM, S.GRADES, S.TYPE, S.TIME
 		FROM SUBJECT S, DEPARTMENT D
 		WHERE S.DEPT_ID = D.ID 
 		AND S.PROFESSOR_ID = #{id}
 	</select>
 	
 	<!-- (교수)강의 - 수강중인 학생 목록 -->
-	<select id="enrolStuList" resultType="EnrolStuVO">
-	SELECT S.ID AS STU_ID, T.YEAR AS YEAR, T.SEMESTER AS SEMESTER, T.NAME AS SUB_NAME, T.ROOM AS ROOM
-	FROM STUDENT S, SUBJECT T, ENROLMENT E
-	WHERE S.ID = E.STU_ID
-	  AND E.SUB_ID = T.ID
-	  AND T.ID = #{id};
+	<select id="enrollStuList" parameterType="EnrollStuVO" resultType="EnrollStuVO">
+ 		SELECT ROW_NUMBER() OVER (ORDER BY S.ID) AS IDX, S.GRADE, S.ID AS STU_ID,
+		       S.SEMESTER, D.NAME AS DEPT_NAME, S.NAME AS STU_NAME, S.TEL, S.GENDER 
+		FROM STUDENT S
+		  JOIN ENROLMENT E ON S.ID = E.STU_ID
+		  JOIN SUBJECT T ON E.SUB_ID = T.ID
+		  JOIN DEPARTMENT D ON S.DEPT_ID = D.ID
+		WHERE 
+		  T.PROFESSOR_ID = #{userId}
+		  AND T.NAME = #{subName}
+		ORDER BY 
+		  S.ID
 	</select>
+	
+	<!-- 성적 조회 -->
+	<select id="rate" parameterType="String" resultType="EnrollStuVO">
+		SELECT G.RATE 
+		FROM GRADE G, SUBJECT T
+		WHERE G.SUB_ID = T.ID
+		AND G.STU_ID = #{userId}
+		AND T.NAME = #{subName};
+	</select>
+	
+	<!-- (교수)성적 입력 -->
+
 	
 	<!-- (학생)강의 - 내 강의 조회 (성적제외)-->
 	<select id="stuSubList">

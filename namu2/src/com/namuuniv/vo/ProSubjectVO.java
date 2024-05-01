@@ -1,59 +1,22 @@
 package com.namuuniv.vo;
 
 public class ProSubjectVO {
-	private int id;
-	private String deptName;
-	private int deptId;
-	private int professorId;
-	private String name;
-	private String room;
-	private String type;
+	
+	private int subId;
 	private int year;
 	private int semester;
+	private String deptName;
+	private String subName;
+	private String room;
+	private int grades;	
+	private String type;
 	private String time;
-	private int grades;
 	
-	public int getId() {
-		return id;
+	public int getSubId() {
+		return subId;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getDeptId() {
-		return deptId;
-	}
-	public void setDeptId(int deptId) {
-		this.deptId = deptId;
-	}
-	public String getDeptName() {
-		return deptName;
-	}
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-	public int getProfessorId() {
-		return professorId;
-	}
-	public void setProfessorId(int professorId) {
-		this.professorId = professorId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getRoom() {
-		return room;
-	}
-	public void setRoom(String room) {
-		this.room = room;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
+	public void setSubId(int subId) {
+		this.subId = subId;
 	}
 	public int getYear() {
 		return year;
@@ -67,11 +30,23 @@ public class ProSubjectVO {
 	public void setSemester(int semester) {
 		this.semester = semester;
 	}
-	public String getTime() {
-		return time;
+	public String getDeptName() {
+		return deptName;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+	public String getSubName() {
+		return subName;
+	}
+	public void setSubName(String subName) {
+		this.subName = subName;
+	}
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
 	}
 	public int getGrades() {
 		return grades;
@@ -79,12 +54,24 @@ public class ProSubjectVO {
 	public void setGrades(int grades) {
 		this.grades = grades;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	
 	@Override
 	public String toString() {
-		return "SubjectVO [id=" + id + ", deptId=" + deptId + ", deptName=" + deptName + ", professorId=" + professorId
-				+ ", name=" + name + ", room=" + room + ", type=" + type + ", year=" + year + ", semester=" + semester
-				+ ", time=" + time + ", grades=" + grades + "]";
+		return "ProSubjectVO [subId=" + subId + ", year=" + year + ", semester=" + semester + ", deptName=" + deptName
+				+ ", subName=" + subName + ", room=" + room + ", grades=" + grades + ", type=" + type + ", time=" + time
+				+ "]";
 	}
 
 }

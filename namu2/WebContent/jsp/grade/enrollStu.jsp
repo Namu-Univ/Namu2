@@ -1,4 +1,4 @@
-<%@page import="com.namuuniv.vo.SubjectVO"%>
+<%@page import="com.namuuniv.vo.ProSubjectVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,26 +23,27 @@
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>연도</th>
+						<th>학년</th>
 						<th>학기</th>
-						<th>강의명</th>
-						<th>강의실</th>
-						<th>이수학점</th>
-						<th>강의시간</th>
+						<th>학번</th>
+						<th>학과</th>
+						<th>이름</th>
+						<th>전화번호</th>
+						<th>성별</th>
 						<th>성적</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${subList}" var="subject">
-						<tr onclick="location.href='enrollStu'">
-							<td>${subject.id }</td>
-							<td>${subject.year }</td>
-							<td>${subject.semester }</td>
-							<td>${subject.deptName}</td>
-							<td>${subject.name }</td>
-							<td>${subject.room }</td>
-							<td>${subject.grades }</td>
-							<td>${subject.time }</td>
+					<c:forEach items="${enrollStu}" var="enrollStu">
+						<tr onclick="location.href='insertGrade'">
+							<td>${enrollStu.idx }</td>
+							<td>${enrollStu.grade }</td>
+							<td>${enrollStu.semester }</td>
+							<td>${enrollStu.stuId}</td>
+							<td>${enrollStu.deptName }</td>
+							<td>${enrollStu.stuName }</td>
+							<td>${enrollStu.tel }</td>
+							<td>${enrollStu.gender }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -1,4 +1,4 @@
-<%@page import="com.namuuniv.vo.SubjectVO"%>
+<%@page import="com.namuuniv.vo.ProSubjectVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,6 +9,12 @@
 <title>강의</title>
 <!-- <link href="../css/frame.css" rel="stylesheet" type="text/css"> -->
 <jsp:include page="../../css/frameCss.jsp"/>
+<script>
+	function remSubName(subName) {
+	    document.getElementById('subNameInput').value = subName;
+	    document.getElementById('subNameForm').submit();
+	}
+</script>
 </head>
 <body>
 
@@ -35,17 +41,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${proSubList}" var="proSubList">
-						<tr onclick="location.href='enrollStu'">
-							<td>${subject.id }</td>
-							<td>${subject.year }</td>
-							<td>${subject.semester }</td>
-							<td>${subject.deptName}</td>
-							<td>${subject.name }</td>
-							<td>${subject.room }</td>
-							<td>${subject.grades }</td>
-							<td>${subject.time }</td>
+					<c:forEach items="${proSub}" var="proSub">
+						<!-- Hidden form -->
+						<form id="subNameForm" action="enrollStu" method="GET">
+						    <input type="hidden" name="subName" id="subNameInput">
+						</form>
+						<tr onclick="remSubName('${proSub.subName}')">
+							<td>${proSub.subId }</td>
+							<td>${proSub.year }</td>
+							<td>${proSub.semester }</td>
+							<td>${proSub.deptName}</td>
+							<td>${proSub.subName }</td>
+							<td>${proSub.room }</td>
+							<td>${proSub.grades }</td>
+							<td>${proSub.time }</td>
 						</tr>
+
 					</c:forEach>
 				</tbody>
 			</table>
