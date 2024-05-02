@@ -19,7 +19,7 @@
 </head>
 <body>
     <div>
-<jsp:include page="../../partials/navTop.jsp"></jsp:include>
+<jsp:include page="../../partials/navTop/navTop.jsp"/>
         <div class="mid">
         <jsp:include page="../../partials/sideNav.jsp"></jsp:include>    
             <div class="maintop">정보수정</div>

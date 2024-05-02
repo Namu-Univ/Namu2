@@ -79,6 +79,15 @@
 	}
 	
 	/* The navigation menu links */
+	.sidenavTitle {
+		color:  #349525;
+		font-size: 2rem;
+		border-style: none none solid none;
+		border-color: #349525;
+		padding: 0.8rem;
+		margin-bottom: 10px;
+	}
+	
 	.sidenav a {
 	  padding: 6px 8px 6px 16px;
 	  text-decoration: none;

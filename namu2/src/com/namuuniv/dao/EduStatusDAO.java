@@ -48,12 +48,11 @@ public class EduStatusDAO {
 	//반려시
 	public static boolean reject(int idx) {
 	    try (SqlSession ss = DBService.getFactory().openSession()) {
-	        boolean result = ss.update("eduStatus.reject", idx) < 0;
+	        boolean result = ss.update("eduStatus.reject", idx) > 0; // 수정된 부분
 	        ss.commit();
 	        return result;
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        // 예외가 발생하면 롤백 수행
 	        try (SqlSession ss = DBService.getFactory().openSession()) {
 	            ss.rollback();
 	        }
