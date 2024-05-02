@@ -17,7 +17,6 @@ public class InfoGradeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		UsersVO user = (UsersVO) session.getAttribute("user");
 		
 		String successMsg = "";
 		request.setAttribute("successMsg", successMsg);

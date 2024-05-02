@@ -15,6 +15,10 @@ public class EnrollStuVO {
 	private String gender;
 	private String subName;
 	private int year;
+	private int begin;
+	private int end;
+	private String room;
+	private String time;
 	
 	public int getUserId() {
 		return userId;
@@ -94,12 +98,37 @@ public class EnrollStuVO {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	public int getBegin() {
+		return begin;
+	}
+	public void setBegin(int begin) {
+		this.begin = begin;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	
 	@Override
 	public String toString() {
 		return "EnrollStuVO [userId=" + userId + ", rate=" + rate + ", idx=" + idx + ", grade=" + grade + ", semester="
 				+ semester + ", stuId=" + stuId + ", subId=" + subId + ", deptName=" + deptName + ", stuName=" + stuName
-				+ ", tel=" + tel + ", gender=" + gender + ", subName=" + subName + ", year=" + year + "]";
+				+ ", tel=" + tel + ", gender=" + gender + ", subName=" + subName + ", year=" + year + ", begin=" + begin
+				+ ", end=" + end + ", room=" + room + ", time=" + time + "]";
 	}
-
+	
 }
