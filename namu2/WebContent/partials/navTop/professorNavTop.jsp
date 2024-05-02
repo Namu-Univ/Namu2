@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-</style>
+    
 <div class="top">
 	<a href="logout">로그아웃</a>
 </div>
@@ -11,6 +11,6 @@
     <div class="topnav">
         <a href="mypage">내정보</a>
         <a href="#">강의</a>
-        <a href="#">공지사항</a>
+        <a href="noticeList">공지사항</a>
     </div>
 </div>
