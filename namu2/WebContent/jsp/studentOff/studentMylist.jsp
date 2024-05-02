@@ -15,31 +15,34 @@
     <jsp:include page="../../partials/sideNav/sideNav_semesteroff.jsp"/>
     	<div class="maintop">휴학 신청 목록</div>
 			<div class="main">
-				<table border="1">
-					<thead>
+				<div class="scroll">
+					<table border="1">
+						<thead>
+								<tr>
+									<th>신청일</th>
+									<th>시작일</th>
+									<th>종료일</th>
+									<th>상태</th>
+								</tr>							
+							</thead>
+								<c:forEach var="vo" items="${list }">
+									<tbody class="scroll">
+										<tr>
+											<td>${vo.reporingDate }</td>
+											<td>${vo.startYear }-${vo.startSemester }</td>
+											<td>${vo.finishYear }-${vo.finishSemester }</td>
+											<td>${vo.approvalStatus }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+	
+							<c:if test="${empty list }">
 							<tr>
-								<th>신청일</th>
-								<th>시작일</th>
-								<th>종료일</th>
-								<th>상태</th>
-							</tr>							
-						</thead>
-					<c:forEach var="vo" items="${list }">
-						<tbody>
-							<tr>
-								<td>${vo.reporingDate }</td>
-								<td>${vo.startYear }-${vo.startSemester }</td>
-								<td>${vo.finishYear }-${vo.finishSemester }</td>
-								<td>${vo.approvalStatus }</td>
+								<td colspan="5">목록이 없습니다.</td>
 							</tr>
-						</tbody>
-					</c:forEach>
-					<c:if test="${empty list }">
-					<tr>
-						<td colspan="5">목록이 없습니다.</td>
-					</tr>
-					</c:if>
-				</table>
+						</c:if>
+					</table>
+				</div>
 			</div>
 </body>
 </html>

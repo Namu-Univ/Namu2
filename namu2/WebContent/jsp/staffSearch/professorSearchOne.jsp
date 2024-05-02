@@ -4,27 +4,6 @@
 <%@page import="com.namuuniv.vo.ProfessorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	    <%    	
-		request.setCharacterEncoding("UTF-8");
-	    
-    	String id = request.getParameter("id");
-    	
-		ProfessorVO svo = SearchDAO.professorOne(id);
-		System.out.println("교수 svo : " + svo);    
-		session.setAttribute("svo", svo); //세션에 저장
-		
-		SqlSession ss = DBService.getFactory().openSession();
-
-		ss.selectOne("staff.professorOne", id);
-		
-		ProfessorVO vo = ss.selectOne("staff.professorOne", id);
-		ss.close();
-		
-		System.out.println(":: vo: " + vo);
-
-		session.setAttribute("ProfessorVO", vo);
-		
-	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +24,7 @@
 </style>
 <script>
 	function modify_go(){
-		location.href="professorProfileUpdate.jsp?id=${svo.id}"; //수정화면으로 이동
+		location.href="StaffUpdateProfessor"; //수정화면으로 이동
 	}
 </script>
 </head>
@@ -61,25 +40,25 @@
 						<tbody>
 							<tr>
 								<td>이름</td>
-								<td>${svo.name }</td>
+								<td>${prvo.name }</td>
 								<td>단과대</td>
-								<td>${svo.college }</td>
+								<td>${prvo.college }</td>
 							</tr>
 							<tr>
 								<td>생년월일</td>
-								<td>${svo.birthDate }</td>
+								<td>${prvo.birthDate }</td>
 								<td>학과</td>
-								<td>${svo.deptName }</td>
+								<td>${prvo.deptName }</td>
 							</tr>
 							<tr>
 								<td>전화번호</td>
-								<td>${svo.tel }</td>
+								<td>${prvo.tel }</td>
 								<td>교번</td>
-								<td>${svo.id }</td>
+								<td>${prvo.id }</td>
 							</tr>
 							<tr>
 								<td>주소</td>
-								<td>${svo.address } </td>
+								<td>${prvo.address } </td>
 								<td></td>
 								<td></td>
 							</tr>

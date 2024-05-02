@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.namuuniv.mybatis.DBService;
 import com.namuuniv.vo.StudentVO;
+import com.namuuniv.vo.UsersVO;
 
 @WebServlet("/StaffUpdateStudent")
 public class StaffUpdateStudentController extends HttpServlet {
@@ -47,16 +49,25 @@ public class StaffUpdateStudentController extends HttpServlet {
             int result = ss.update("namu.updateStudent", vo);
             System.out.println(">> 수정 성공 ");
             
-            response.sendRedirect("jsp/staffSearch/studentSearchOne.jsp?id=" + id);
+            response.sendRedirect("SearchOneStudent?id=" + id);
         } catch(Exception e) {
             System.out.println(">>[예외발생] 수정 실패");
             e.printStackTrace();
          
-            request.getRequestDispatcher("jsp/staffSearch/studentProfileUpdate.jsp?id=" + id).forward(request, response);
+            request.getRequestDispatcher("StaffUpdateStudent?id=" + id).forward(request, response);
         } finally {
             ss.close();
         }
 
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		UsersVO user = (UsersVO) session.getAttribute("user");
+		
+		String id = req.getParameter("id");
+		req.getRequestDispatcher("jsp/staffSearch/studentProfileUpdate.jsp?id=" + id).forward(req, resp);
 	}
 
 }

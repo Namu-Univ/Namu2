@@ -8,11 +8,11 @@
 <jsp:include page="../../css/frameCss.jsp"></jsp:include>
 <script>
 	function save_go(frm){
-		frm.action = "../../StaffUpdateStaff";
+		frm.action = "StaffUpdateStaff";
 		frm.submit();
 	}
 	function cancel(){
-		location.href="staffSearchOne.jsp?id=${svo.id }";
+		location.href="SearchOneStaff?id=${stvo.id }";
 	}
 </script>
 <style>
@@ -40,21 +40,21 @@
 					<tbody>
 						<tr>
 							<td>이름</td>
-							<td><input type="text" name="name" value="${StaffVO.name }"></td>
+							<td><input type="text" name="name" value="${stvo.name }"></td>
 							<td>부서</td>
-							<td><input type="text" name="dept" value="${StaffVO.dept }"></td>
+							<td><input type="text" name="dept" value="${stvo.dept }"></td>
 						</tr>
 						<tr>
 							<td>생년월일</td>
-							<td><input type="text" name="birthDate" value="${StaffVO.birthDate }"></td>
+							<td><input type="text" name="birthDate" value="${stvo.birthDate }"></td>
 							<td>교번</td>
-							<td>${svo.id }</td>
+							<td>${stvo.id }</td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
-							<td><input type="text" name="tel" value="${StaffVO.tel}"></td>
+							<td><input type="text" name="tel" value="${stvo.tel}"></td>
 							<td>주소</td>
-							<td><input type="text" name="address" value="${StaffVO.address }"></td>
+							<td><input type="text" name="address" value="${stvo.address }"></td>
 						</tr>
 					</tbody>
 					<tfoot>
@@ -62,7 +62,7 @@
 							<td colspan="4">
 								<input type="button" value="수정" onclick="save_go(this.form)">
 								<input type="button" value="취소" onclick="cancel()">
-								<input type="hidden" name="id" value="${StaffVO.id }">
+								<input type="hidden" name="id" value="${stvo.id }">
 							</td>
 						</tr>
 					</tfoot>

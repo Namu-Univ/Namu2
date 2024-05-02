@@ -18,7 +18,7 @@ public class SearchProfessorController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
 		String idx = req.getParameter("idx");
 		String keyword = req.getParameter("keyword");
 		System.out.println("idx" + idx + "keyword" + keyword);

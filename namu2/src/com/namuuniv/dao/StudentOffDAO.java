@@ -1,11 +1,14 @@
 package com.namuuniv.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.namuuniv.mybatis.DBService;
 import com.namuuniv.vo.EduStatusVO;
+import com.namuuniv.vo.NoticeVO;
 
 public class StudentOffDAO {
 	//휴학 신청서 제출
