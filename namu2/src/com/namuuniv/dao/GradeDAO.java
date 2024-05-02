@@ -34,7 +34,11 @@ public class GradeDAO {
 	// 성적 입력
 	public static int insertGrade(GradeVO vo) {
 		try (SqlSession ss = DBService.getFactory().openSession()){
-			return ss.insert("grade.enrollStuList", vo);
+			int result = ss.insert("grade.insertGrade", vo);
+			if (result > 0) {
+				ss.commit();
+				return result;
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

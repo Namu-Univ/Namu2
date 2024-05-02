@@ -15,7 +15,7 @@
 	    var mid = parseInt(document.getElementById('mid').value);
 	    var fin = parseInt(document.getElementById('fin').value);
 	    var absent = parseInt(document.getElementById('absent').value);
-	
+
 	    // 중간고사와 기말고사 점수의 평균
 	    var averageScore = (mid + fin) / 2;
 	
@@ -24,6 +24,7 @@
 	
 	    document.getElementById('exScore').value = exScore;
 	}
+
 </script>	
 <body>
 
@@ -40,7 +41,7 @@
 				EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
         	%>
         	<div>
-				<%vo.getYear()%><%=vo.getSubName() %>
+				<%=vo.getYear() %> - <%=vo.getSemester() %> <%=vo.getSubName() %>
         	</div>
         	<div>
         		학번 <%=vo.getStuId()%>
@@ -48,7 +49,7 @@
         	<div>
         		이름 <%=vo.getStuName() %> 
         	</div>		
-			<form action="insertGrade" method="post">
+			<form action="insertGrade" method="POST">
 	            <label for="absent">결석</label>
 				<input type="number" id="absent" name="absent" min="0" max="15" step="1" value="0">
 				

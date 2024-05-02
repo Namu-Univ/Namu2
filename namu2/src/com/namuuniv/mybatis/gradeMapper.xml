@@ -14,57 +14,56 @@
 	
 	<!-- (교수)강의 - 수강중인 학생 목록 -->
 	<select id="enrollStuList" parameterType="EnrollStuVO" resultType="EnrollStuVO">
- 		SELECT ROW_NUMBER() OVER (ORDER BY S.ID) AS IDX, S.GRADE, S.ID AS STU_ID,
-		       S.SEMESTER, D.NAME AS DEPT_NAME, S.NAME AS STU_NAME, S.TEL, S.GENDER 
+ 		SELECT ROW_NUMBER() OVER (ORDER BY S.ID) AS IDX, 
+		       G.RATE AS RATE,
+		       S.ID AS STU_ID,
+		       S.GRADE AS GRADE,
+		       S.SEMESTER, 
+		       D.NAME AS DEPT_NAME, 
+		       S.NAME AS STU_NAME, 
+		       S.TEL, 
+		       S.GENDER
 		FROM STUDENT S
-		  JOIN ENROLMENT E ON S.ID = E.STU_ID
-		  JOIN SUBJECT T ON E.SUB_ID = T.ID
-		  JOIN DEPARTMENT D ON S.DEPT_ID = D.ID
-		WHERE 
-		  T.PROFESSOR_ID = #{userId}
+		JOIN ENROLMENT E ON S.ID = E.STU_ID
+		JOIN SUBJECT T ON E.SUB_ID = T.ID
+		JOIN DEPARTMENT D ON S.DEPT_ID = D.ID
+		LEFT JOIN GRADE G ON S.ID = G.STU_ID AND E.SUB_ID = G.SUB_ID
+		WHERE T.PROFESSOR_ID = #{userId}
 		  AND T.NAME = #{subName}
-		ORDER BY 
-		  S.ID
+		ORDER BY S.ID
 	</select>
 	
-	<!-- 성적 조회 -->
-	<select id="searchRate" parameterType="EnrollStuVO" resultType="EnrollStuVO">
-		SELECT G.RATE 
-		FROM GRADE G, SUBJECT T
-		WHERE G.SUB_ID = T.ID
-		AND G.STU_ID = #{userId}
-		AND T.NAME = #{subName};
-	</select>
-	
-	<select id="infoGrade" parameterType="EnrollStuVO" resultType="EnrollStuVO">
-		SELECT G.RATE 
-		FROM GRADE G, SUBJECT T
-		WHERE G.SUB_ID = T.ID
-		AND G.STU_ID = #{userId}
-		AND T.NAME = #{subName};
-	</select>
-	
-	<!-- (교수)성적 테이블에 존재여부 확인 -->
-	<select id="selectGrade">
-	
+	<!-- (교수)성적 입력 가능여부 -->
+	<select id="searchGrade" parameterType="EnrollStuVO">
+		SELECT * 
+		FROM GRADE
+		WHERE STU_ID = #{stuId}
+		AND SUB_ID = #{subId};
 	</select>
 	
 	<!-- (교수)성적 입력 -->
-	<insert id="insertGrade">
+	<insert id="insertGrade" parameterType="GradeVO">
 		INSERT INTO GRADE (ID, STU_ID, SUB_ID, ABSENT, 
 			   MID_EXAM, FIN_EXAM, EX_SCORE, RATE) 
-		VALUES (GRADE_SEQ.NEXTVAL, #{gradeId}, #{subID}, 
-			   #{absent}, #{midExam}, #{finExam}, #{exScore}, #{rate});
+		VALUES (GRADE_SEQ.NEXTVAL, #{stuId}, #{subId}, 
+			   #{absent}, #{midExam}, #{finExam}, #{exScore, jdbcType=NUMERIC}, #{rate})
 	</insert>
 	
-	<!-- (학생)강의 - 내 강의 조회 (성적제외)-->
+	<!-- (학생)강의 - 내 강의 조회-->
 	<select id="stuSubList">
-		SELECT S.ID AS STU_ID, T.YEAR AS YEAR, T.SEMESTER AS SEMESTER, T.NAME AS NAME, G.RATE  
-		FROM STUDENT S, SUBJECT T, ENROLMENT E, GRADE G
-		WHERE S.ID = E.STU_ID
-		AND E.SUB_ID = T.ID
-		AND G.STU_ID = S.ID
-		AND G.SUB_ID = T.ID
-		AND S.ID = #{id};
+		SELECT ROW_NUMBER() OVER (ORDER BY S.ID) AS IDX, 
+		       G.RATE AS RATE,
+		       T.YEAR AS YEAR,
+               T.SEMESTER, 
+                T.NAME,
+                T.ROOM,
+                T.GRADES
+		FROM STUDENT S
+		JOIN ENROLMENT E ON S.ID = E.STU_ID
+		JOIN SUBJECT T ON E.SUB_ID = T.ID
+		JOIN DEPARTMENT D ON S.DEPT_ID = D.ID
+		LEFT JOIN GRADE G ON S.ID = G.STU_ID AND E.SUB_ID = G.SUB_ID
+		WHERE S.ID = #{id}
+		ORDER BY S.ID;
 	</select>
 </mapper>

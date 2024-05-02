@@ -3,22 +3,30 @@ package com.namuuniv.vo;
 public class EnrollStuVO {
 	
 	private int userId;
+	private String rate;
 	private int idx;
 	private int grade;
 	private int semester;
 	private int stuId;
+	private int subId;
 	private String deptName;
 	private String stuName;
 	private String tel;
 	private String gender;
 	private String subName;
 	private int year;
-
+	
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
 	}
 	public int getIdx() {
 		return idx;
@@ -43,6 +51,12 @@ public class EnrollStuVO {
 	}
 	public void setStuId(int stuId) {
 		this.stuId = stuId;
+	}
+	public int getSubId() {
+		return subId;
+	}
+	public void setSubId(int subId) {
+		this.subId = subId;
 	}
 	public String getDeptName() {
 		return deptName;
@@ -74,7 +88,6 @@ public class EnrollStuVO {
 	public void setSubName(String subName) {
 		this.subName = subName;
 	}
-	
 	public int getYear() {
 		return year;
 	}
@@ -84,9 +97,9 @@ public class EnrollStuVO {
 	
 	@Override
 	public String toString() {
-		return "EnrollStuVO [userId=" + userId + ", idx=" + idx + ", grade=" + grade + ", semester=" + semester
-				+ ", stuId=" + stuId + ", deptName=" + deptName + ", stuName=" + stuName + ", tel=" + tel + ", gender="
-				+ gender + ", subName=" + subName + ", year=" + year + "]";
+		return "EnrollStuVO [userId=" + userId + ", rate=" + rate + ", idx=" + idx + ", grade=" + grade + ", semester="
+				+ semester + ", stuId=" + stuId + ", subId=" + subId + ", deptName=" + deptName + ", stuName=" + stuName
+				+ ", tel=" + tel + ", gender=" + gender + ", subName=" + subName + ", year=" + year + "]";
 	}
 
 }

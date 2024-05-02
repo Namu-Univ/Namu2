@@ -28,7 +28,7 @@
 			  %>
 			  <div id="errorMsg" style="color:red;"><%=errorMsg %></div>
 			 <% 
-			 session.setAttribute("errorMsg", null);
+			 	session.invalidate();
 			 } 
 			 %>
 			  

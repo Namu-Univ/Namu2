@@ -17,6 +17,7 @@
 		<typeAlias alias="EduStatusVO" type="com.namuuniv.vo.EduStatusVO"/>
 		<typeAlias alias="ProSubjectVO" type="com.namuuniv.vo.ProSubjectVO"/>
 		<typeAlias alias="EnrollStuVO" type="com.namuuniv.vo.EnrollStuVO"/>
+		<typeAlias alias="GradeVO" type="com.namuuniv.vo.GradeVO"/>
 	</typeAliases>
 
   <environments default="development">

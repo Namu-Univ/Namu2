@@ -18,27 +18,32 @@ public class InfoGradeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		UsersVO user = (UsersVO) session.getAttribute("user");
-		String role = user.getRole();
 		
+		String successMsg = "";
+		request.setAttribute("successMsg", successMsg);
 		int stuId = Integer.parseInt(request.getParameter("stuId"));
 		String stuName = request.getParameter("stuName");
+		int subId = (Integer)session.getAttribute("subId");
 		String subName = (String)session.getAttribute("subName");
-		int year = Integer.parseInt((String)session.getAttribute("year"));
-		int semester = Integer.parseInt((String)session.getAttribute("semester"));
+		int year = (Integer)session.getAttribute("year");
+		int semester = (Integer)session.getAttribute("semester");
+		
 		
 		EnrollStuVO vo = new EnrollStuVO();
+		vo.setSubId(subId);
 		vo.setStuId(stuId);
 		vo.setStuName(stuName);
 		vo.setSubName(subName);
 		vo.setYear(year);
 		vo.setSemester(semester);
 		session.setAttribute("remStuSub", vo);
+		
 		request.getRequestDispatcher("jsp/grade/infoGrade.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 
 }
