@@ -33,7 +33,7 @@ public class AddProfessorController extends HttpServlet{
 		
 		String hireDateStr = request.getParameter("hireDate");
 		Date hireDateSql = null;
-		if (hireDateStr != null && hireDateStr.isEmpty()) {
+		if (hireDateStr != null && !hireDateStr.isEmpty()) {
 			hireDateSql = Date.valueOf(hireDateStr);
 		}
 		
