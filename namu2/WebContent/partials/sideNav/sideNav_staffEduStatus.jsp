@@ -4,5 +4,5 @@
 <!-- 교직원 학생 학적관리 -->
 <div class="sidenav">
 	<div class="sidenavTitle"> 관리 </div>
-	<a href="eduStatus/eduStatusList.jsp">학생 학적 관리</a>
+	<a href="eduStatus">학생학적관리</a>
 </div>

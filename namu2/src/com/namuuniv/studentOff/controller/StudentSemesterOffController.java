@@ -24,7 +24,7 @@ public class StudentSemesterOffController extends HttpServlet {
 		StudentVO vo = (StudentVO)session.getAttribute("student");
 		request.setAttribute("vo", vo);
 		
-		request.getRequestDispatcher("jsp/studentOff/studentMylist.jsp").forward(request, response);	
+		request.getRequestDispatcher("jsp/studentOff/studentSemesterOff.jsp").forward(request, response);	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +50,8 @@ public class StudentSemesterOffController extends HttpServlet {
 		if (result > 0) {
 			// 완료 후 목록으로 이동
 			//response.sendRedirect("jsp/studentOff/studentMylist.jsp");
-			response.sendRedirect("StudentMysemesteroff");
+			//response.sendRedirect("StudentMysemesteroff");
+			request.getRequestDispatcher("StudentMysemesteroff").forward(request, response);
 		} else {
 			// 예외처리 추후 구현
 		}
