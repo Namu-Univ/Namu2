@@ -15,6 +15,8 @@ public class StudentVO {
 	private int semester;
 	private Date entranceDate;
 	private Date graduationDate;
+	private String deptName;
+	private String college;
 
 	public int getId() {
 		return id;
@@ -106,6 +108,22 @@ public class StudentVO {
 
 	public void setGraduationDate(Date graduationDate) {
 		this.graduationDate = graduationDate;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
 	}
 
 	@Override

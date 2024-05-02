@@ -18,13 +18,13 @@
 
 	<update id="approve" parameterType="int">
 		UPDATE STU_STA
-		SET APPROVAL_STATUS = 'approve'
+		SET APPROVAL_STATUS = '승인'
 		WHERE IDX = #{idx}
 	</update>
 	
 	<update id="reject" parameterType="int">
 		UPDATE STU_STA
-		SET APPROVAL_STATUS = 'reject'
+		SET APPROVAL_STATUS = '반려'
 		WHERE IDX = #{idx}
 	</update>
 

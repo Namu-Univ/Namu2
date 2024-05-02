@@ -26,10 +26,15 @@
 	]]>
 	</select>
 	
-	<!-- 공지글 1개 조회(상세보기) -->
+	<!-- 공지글 1개 조회(상세보기), 첨부파일 정보 -->
 	<select id="noticeDetail" parameterType="int" resultType="com.namuuniv.vo.NoticeVO">
-		SELECT ID, STAFF_ID, TITLE, CONTENT, VIEWS, CREATED
-		FROM NOTICE WHERE ID = #{id}
+		SELECT N.ID, N.TITLE, N.CONTENT, N.VIEWS, N.CREATED
+		     , N.STAFF_ID, S.NAME AS staffName
+		     , F.ID AS fileId, F.ORIGIN_FILENAME, F.FILENAME
+		FROM NOTICE N
+		JOIN STAFF S ON N.STAFF_ID = S.ID
+		LEFT JOIN NOTICE_FILE F ON N.ID = F.NOTICE_ID
+		WHERE N.ID = #{id}
 	</select>
 	
 	<!-- 공지글 조회수 증가 -->
@@ -39,4 +44,47 @@
 		WHERE ID = #{id}
 	</update>
 
+	<!-- 공지글 작성 -->
+	<select id="nextNoticeId" resultType="int">
+    	SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<insert id="noticeWrite" parameterType="com.namuuniv.vo.NoticeVO">
+		INSERT INTO NOTICE (ID, STAFF_ID, TITLE, CONTENT, VIEWS, CREATED)
+		VALUES (#{id}, #{staffId}, #{title}, #{content}, 0, SYSDATE)	
+	</insert>
+	
+	<!-- 공지글 수정 -->
+	<update id="updateNotice" parameterType="com.namuuniv.vo.NoticeVO">
+		UPDATE NOTICE 
+		SET TITLE = #{title},
+		    CONTENT = #{content}
+		WHERE ID = #{id}
+	</update>
+	
+	<!-- 공지글 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM NOTICE WHERE ID = #{id}
+	</delete>
+	
+	<!-- 파일 정보 저장 -->
+	<select id="nextFileId" resultType="int">
+    	SELECT FILE_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<!-- 파일 정보 추가 -->
+	<insert id="insertFile" parameterType="com.namuuniv.vo.NoticeFileVO">
+	    INSERT INTO NOTICE_FILE (ID, NOTICE_ID, ORIGIN_FILENAME, FILENAME)
+	    VALUES (#{id}, #{noticeId}, #{originFilename}, #{filename})	
+	</insert>
+	
+	<!-- 파일 정보 조회 -->
+	<select id="getFiles" parameterType="int" resultType="com.namuuniv.vo.NoticeFileVO">
+		SELECT * FROM NOTICE_FILE WHERE NOTICE_ID = #{noticeId}
+	</select>
+	
+	<!-- 파일 정보 삭제 -->
+	<delete id="deleteNoticeFiles" parameterType="int">
+		DELETE FROM NOTICE_FILE WHERE NOTICE_ID = #{id}	
+	</delete>
 </mapper>

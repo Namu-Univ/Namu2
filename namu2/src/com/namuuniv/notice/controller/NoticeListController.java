@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.namuuniv.dao.NoticeDAO;
 import com.namuuniv.vo.NoticeVO;
 import com.namuuniv.vo.PagingVO;
+import com.namuuniv.vo.UsersVO;
 
 @WebServlet("/noticeList")
 public class NoticeListController extends HttpServlet {
@@ -19,16 +21,15 @@ public class NoticeListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*		
 		HttpSession session = request.getSession();
 		UsersVO user = (UsersVO) session.getAttribute("user");
 		String role = user.getRole();
-		Integer id = (Integer) request.getSession().getAttribute("id");
-		 */
-		String role = (String) request.getSession().getAttribute("role");
 		
 		// 교직원 여부 확인
-		boolean isStaff = "staff".equals(role);
+		boolean ifStaff = false;
+		if (user != null && "staff".equals(role)) {
+			ifStaff = true;
+		}
 		
 		// 현재 페이지 번호
 		String cPage = request.getParameter("cPage");
@@ -44,11 +45,11 @@ public class NoticeListController extends HttpServlet {
 		pvo.setTotalRecord(NoticeDAO.totalNoticeCount());
 		pvo.calculatePaging();
 		
-		// 현재 페이지에 해당하는 공지 목록
+		// 현재 페이지에 해당하는 공지목록
 		List<NoticeVO> list = NoticeDAO.noticeList(pvo.getBegin(), pvo.getEnd());
 		request.setAttribute("pvo", pvo);
 		request.setAttribute("list", list);
-		request.setAttribute("isStaff", isStaff);
+		request.setAttribute("isStaff", ifStaff);
 		request.getRequestDispatcher("jsp/notice/noticeList.jsp").forward(request, response);
 	}
 	

@@ -1,29 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <style>
-html, body {
-	position: relative;
-	width: 1440px;
-	height: 1024px;
+body {
+	background-image: url("/namu2/css/img/login_background.png");
+	background-size: cover;
 }
 
-body {
-	width:100%;
- 	height:100%;
-	justify-content: center;
-	background-image: url("/namu2/css/img/login_background.png");
+.container {
+
+	position: relative;
+	display: flex;
+    justify-content: center;
 }
 
 #loginForm {
+	align-items: center;
+	justify-content: center;
 	background-size: cover;
 	position: relative;
 	width: 474px;
 	height: 673px;
-	left: 50%;
-    transform: translateX(-50%);
 	background: #FFFFFF;
 	border-radius: 20px;
-	top: 15%;
+	margin: 0 auto;
+	margin-right: auto;
 }
 
 
