@@ -9,7 +9,7 @@
         나무대학교
     </div>
     <div class="topnav">
-        <a href="myPage">내정보</a>
+        <a href="mypage">내정보</a>
         <a href="SearchStudent">등록/조회</a>
         <a href="eduStatus">학적관리</a>
         <a href="#">공지사항</a>
