@@ -22,8 +22,13 @@ public class DeleteNoticeController extends HttpServlet{
 			return;
 		}
 		int id = Integer.parseInt(idParam);
-		int result = NoticeDAO.deleteNotice(id);
-		if (result > 0) {
+		
+		// 파일 정보 삭제
+		int fileDelete = NoticeDAO.deleteNoticeFile(id);
+		
+		// 공지글 삭제
+		int noticeDelete = NoticeDAO.deleteNotice(id);
+		if (fileDelete >= 0 && noticeDelete > 0) {
 			response.sendRedirect("noticeList");
 		} else {
 			request.setAttribute("error", "공지사항 삭제에 실패했습니다.");

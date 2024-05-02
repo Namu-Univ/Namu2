@@ -45,7 +45,7 @@ public class NoticeListController extends HttpServlet {
 		pvo.setTotalRecord(NoticeDAO.totalNoticeCount());
 		pvo.calculatePaging();
 		
-		// 현재 페이지에 해당하는 공지 목록
+		// 현재 페이지에 해당하는 공지목록
 		List<NoticeVO> list = NoticeDAO.noticeList(pvo.getBegin(), pvo.getEnd());
 		request.setAttribute("pvo", pvo);
 		request.setAttribute("list", list);

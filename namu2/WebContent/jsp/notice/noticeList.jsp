@@ -8,16 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
+<jsp:include page="../../css/noticeListCss.jsp" />
 </head>
 <body>
-	<table border="1">
+	<table>
 		<thead>
 			<tr class="title">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>날짜</th>
-				<th>조회수</th>
+				<th id="id">번호</th>
+				<th id="title">제목</th>
+				<th id="author">작성자</th>
+				<th id="date">날짜</th>
+				<th id="views">조회수</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,20 +40,17 @@
 			<tr>
 				<td colspan = "4">
 					<div class="paging">
-					<c:if test="{pvo.beginPage == 1}">
-						<span class="disable">&laquo;</span>
-					</c:if>
-					<c:if test="{pvo.beginPage != 1}">
-						<a href="noticeList?cPage=${pvo.beginPage - 1}">&laquo;</a>
-					</c:if>
-						<c:if test="${pvo.nowBlock == 1}">
-							<span class="disabled">&laquo;</span>
+						<c:if test="${pvo.beginPage == 1}">
+							<span class="disable">&laquo;</span>
 						</c:if>
-						
+						<c:if test="${pvo.beginPage != 1}">
+							<a href="noticeList?cPage=${pvo.beginPage - 1}">&laquo;</a>
+						</c:if>
+					
 						<c:forEach var="page" begin="${pvo.beginPage}" end="${pvo.endPage}">
 							<c:choose>
 								<c:when test="${page == pvo.nowPage}">
-									<span>${page}</span>
+									<span class="current">${page}</span>
 								</c:when>
 								<c:otherwise>
 									<a href="noticeList?cPage=${page}">${page}</a>
@@ -70,7 +68,7 @@
 				</td>
 				<td>
 					<c:if test="${isStaff }">
-						<button onclick="location.href='noticeWrite'">글작성</button>
+						<button class="button" onclick="location.href='noticeWrite'">글작성</button>
 					</c:if>
 				</td>
 			</tr>
