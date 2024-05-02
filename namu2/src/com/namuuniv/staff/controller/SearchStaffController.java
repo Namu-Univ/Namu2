@@ -18,15 +18,18 @@ public class SearchStaffController extends HttpServlet {
        
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		
 		String idx = req.getParameter("idx");
 		String keyword = req.getParameter("keyword");
+		System.out.println("idx" + idx + "keyword" + keyword);
 		
 		if(keyword == null || keyword.trim().length() == 0) {
 			req.getRequestDispatcher("jsp/staffSearch/staffSearchList.jsp").forward(req, resp);
 			return;
 		}
 		List<StaffVO> list = SearchDAO.getStaffSearch(idx, keyword);
+		System.out.println("list: " + list);
 		
 		String title ="";
 		switch (idx) {

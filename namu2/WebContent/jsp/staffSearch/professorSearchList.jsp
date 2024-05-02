@@ -20,7 +20,7 @@
 	<jsp:include page="../../partials/sideNav/sideNav_staffSearch.jsp"/> 
 		<div class="maintop">교수 조회</div>
 			<div class="main">
-				<form action="../../SearchProfessor" method="get">
+				<form action="SearchProfessor" method="get">
 					<select name="idx">
 						<option value="0">이름</option>
 						<option value="1">교번</option>
@@ -44,7 +44,7 @@
 						<tbody>
 							<tr>
 								<td>${vo.id }</td>
-								<td><a href="jsp/staffSearch/professorSearchOne.jsp?id=${vo.id}">${vo.name }</td>
+								<td><a href="SearchOneProfessor?id=${vo.id }">${vo.name }</td>
 								<td>${vo.deptName }</td>
 								<td>${vo.tel }</td>
 							</tr>							

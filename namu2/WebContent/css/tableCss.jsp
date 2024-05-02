@@ -19,4 +19,17 @@
 	.title { width: 30%; }
 	
 	tfoot { height: 2em; text-align: center; font-size: 1.5em;}
+	
+	.scroll {
+    overflow-y: auto;
+    max-height: 400px;
+	}
+
+	.scroll thead,
+	.scroll tbody tr {
+	    display: table;
+	    width: 100%;
+	    table-layout: fixed;
+	}
+}
 </style>

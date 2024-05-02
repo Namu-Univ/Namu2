@@ -8,15 +8,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.namuuniv.mybatis.DBService;
 import com.namuuniv.vo.StaffVO;
+import com.namuuniv.vo.UsersVO;
 
 @WebServlet("/StaffUpdateStaff")
 public class StaffUpdateStaffController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		UsersVO user = (UsersVO) session.getAttribute("user");
+		
+		String id = req.getParameter("id");
+		req.getRequestDispatcher("jsp/staffSearch/staffProfileUpdate.jsp?id=" + id).forward(req, resp);
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -46,12 +56,12 @@ public class StaffUpdateStaffController extends HttpServlet {
             int result = ss.update("namu.updateStaff", vo);
             System.out.println(">> 수정 성공 ");
             
-            response.sendRedirect("jsp/staffSearch/staffSearchOne.jsp?id=" + id);
+            response.sendRedirect("SearchOneStaff?id=" + id);
         } catch(Exception e) {
             System.out.println(">>[예외발생] 수정 실패");
             e.printStackTrace();
          
-            request.getRequestDispatcher("jsp/staffSearch/staffProfileUpdate.jsp?id=" + id).forward(request, response);
+            request.getRequestDispatcher("StaffUpdateStaff?id=" + id).forward(request, response);
         } finally {
             ss.close();
         }

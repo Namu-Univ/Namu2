@@ -4,27 +4,6 @@
 <%@page import="com.namuuniv.vo.StudentVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%    	
-		request.setCharacterEncoding("UTF-8");
-
-    	String id = request.getParameter("id");
-    	
-		StudentVO svo = SearchDAO.studentOne(id);
-		System.out.println("학생 svo : " + svo);    
-		session.setAttribute("svo", svo); //세션에 저장
-		
-		SqlSession ss = DBService.getFactory().openSession();
-
-		ss.selectOne("staff.studentOne", id);
-		
-		StudentVO vo = ss.selectOne("staff.studentOne", id);
-		ss.close();
-		
-		System.out.println(":: vo: " + vo);
-
-		session.setAttribute("StudentVO", vo);
-
-	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +24,7 @@
 </style>
 <script>
 	function modify_go(){
-		location.href="studentProfileUpdate.jsp?id=${svo.id}"; //수정화면으로 이동
+		location.href="StaffUpdateStudent";
 	}
 </script>
 </head>

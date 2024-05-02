@@ -21,7 +21,7 @@
 			<div class="maintop">교직원 조회</div>
 			
 			<div class="main">
-				<form action="../../SearchStaff" method="get">
+				<form action="SearchStaff" method="get">
 					<select name="idx">
 						<option value="0">이름</option>
 						<option value="1">교번</option>
@@ -45,7 +45,7 @@
 						<tbody>
 							<tr>
 								<td>${vo.id }</td>
-								<td><a href="jsp/staffSearch/staffSearchOne.jsp?id=${vo.id}">${vo.name }</td>
+								<td><a href="SearchOneStaff?id=${vo.id}">${vo.name }</td>
 								<td>${vo.dept }</td>
 								<td>${vo.tel }</td>
 							</tr>							
