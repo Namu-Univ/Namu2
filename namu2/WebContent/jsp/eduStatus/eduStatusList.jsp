@@ -73,8 +73,8 @@ header {
 <body>
 <jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 <div class="mid">
-    <jsp:include page="../../partials/sideNav/sideNav_semesteroff.jsp"/>
- 	<div class="maintop">교수 조회</div>
+    <jsp:include page="../../partials/sideNav/sideNav_staffEduStatus.jsp"/>
+ 	<div class="maintop">학적 관리</div>
     <div class="main">
        
         <table>

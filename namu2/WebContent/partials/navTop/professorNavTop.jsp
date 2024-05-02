@@ -9,8 +9,8 @@
         <img src="https://res.cloudinary.com/djlee4yl2/image/upload/v1714042611/logo/NamuUnivLogo_ixcxdw.png" alt="나무대학교 로고">나무대학교
     </div>
     <div class="topnav">
-        <a href="partials/sideNav/sideNav_mypage.jsp">내정보</a>
-        <a href="partials/sideNav/sideNav_myLecture.jsp">강의</a>
-        <a href="partials/sideNav/sideNav_notivce.jsp">공지사항</a>
+        <a href="mypage">내정보</a>
+        <a href="#">강의</a>
+        <a href="#">공지사항</a>
     </div>
 </div>
