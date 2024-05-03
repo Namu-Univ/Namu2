@@ -23,7 +23,7 @@
 				<form action="SearchStudent" method="get">
 					<select name="idx">
 						<option value="0">이름</option>
-						<option value="1">교번</option>
+						<option value="1">학번</option>
 						<option value="2">전공</option>
 					</select>
 					<input type="text" name="keyword">
