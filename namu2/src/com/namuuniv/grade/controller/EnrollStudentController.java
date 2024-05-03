@@ -27,7 +27,6 @@ public class EnrollStudentController extends HttpServlet {
         	int userId = user.getId();
             if (role.equals("professor")) {
                 String resInsert = (String)session.getAttribute("resInsert");
-                System.out.println(resInsert);
                 if (resInsert == null) {
                 	// 성적 입력 전
 					processRequest(request, response, userId, false);

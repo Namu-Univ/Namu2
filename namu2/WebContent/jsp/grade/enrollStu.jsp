@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>수강중인 학생</title>
 <jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/enrollStuCss.jsp"/>
 </head>
 <script>
 	function remStuId(stuId, stuName) {
@@ -39,17 +40,18 @@
 		            int year = Integer.parseInt(request.getParameter("year"));
 		            int semester = Integer.parseInt(request.getParameter("semester"));
         		%>
-	        		<div><%=year%> - <%=semester%> <%=subName%></div>
+	        		<div class="subTitle"><%=year%> - <%=semester%> <%=subName%></div>
 	        	<%
 	        	} else {
 	        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
         		%>
-        			<div><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
+        			<div class="subTitle"><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
         		<%
         		}
         		%>
+        		<hr>
         	
-			<table border="1">
+			<table>
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -91,7 +93,7 @@
 						        <c:choose>
 							        <c:when test="${enrollStu.rate == null}">
 							        	<!-- 성적 존재하지 않을 시 -->
-							            <button onclick="remStuId('${enrollStu.stuId}', '${enrollStu.stuName}')">등록</button>
+							            <button class="register" onclick="remStuId('${enrollStu.stuId}', '${enrollStu.stuName}')">등록</button>
 							        </c:when>
 							        <c:otherwise>
 							           	<!-- 성적 존재 시-->
