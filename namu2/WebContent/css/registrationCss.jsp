@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>    
-	body {
-		background-color: #ffffff;
-		margin: 0;
-		padding: 20px;
-	}
-	
 	.container {
 		background: #ffffff;
 		padding: 20px;
