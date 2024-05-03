@@ -8,6 +8,7 @@
 <title>교수 조회</title>
 <jsp:include page="../../css/frameCss.jsp"/>
 <jsp:include page="../../css/tableCss.jsp"/>
+<jsp:include page="../../css/btnCss.jsp"/>
 <style>
 	form {
 		text-align: center;
@@ -27,7 +28,7 @@
 						<option value="2">전공</option>
 					</select>
 					<input type="text" name="keyword">
-					<input type="submit" value="검색">
+					<input class="searchbtn" type="submit" value="검색">
 				</form>
 				
 				<table border="1">
