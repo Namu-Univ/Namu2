@@ -50,18 +50,31 @@ public class EnrollStudentController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response, int userId, boolean isRedirect) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String subName = null;
-        if (!isRedirect) {
-        	int subId = Integer.parseInt(request.getParameter("subId"));
+        int subId = 0;
+        int year = 0;
+        int semester = 0;
+        String nextPage = (String)session.getAttribute("nextPage");
+        if (!isRedirect && nextPage == null) {
+        	subId = Integer.parseInt(request.getParameter("subId"));
             subName = request.getParameter("subName");
-            int year = Integer.parseInt(request.getParameter("year"));
-            int semester = Integer.parseInt(request.getParameter("semester"));
-            
-            session.setAttribute("subId", subId);
-            session.setAttribute("subName", subName);
-            session.setAttribute("year", year);
-            session.setAttribute("semester", semester);
-        } else {
-            subName = (String) session.getAttribute("subName");
+            year = Integer.parseInt(request.getParameter("year"));
+            semester = Integer.parseInt(request.getParameter("semester"));
+            request.setAttribute("subId", subId);
+            request.setAttribute("subName", subName);
+            request.setAttribute("year", year);
+            request.setAttribute("semester", semester);       
+        }
+        if (!isRedirect || isRedirect && nextPage != null) {
+        	subId = Integer.parseInt(request.getParameter("subId"));
+        	subName = (String) request.getAttribute("subName");
+        	year = Integer.parseInt(request.getParameter("year"));
+        	semester = Integer.parseInt(request.getParameter("semester"));
+            System.out.println(subName);
+            System.out.println(subId);
+            request.setAttribute("subId", subId);
+            request.setAttribute("subName", subName);
+            request.setAttribute("year", year);
+            request.setAttribute("semester", semester); 
         }
         
         // 현재 페이지 번호 처리
@@ -89,7 +102,6 @@ public class EnrollStudentController extends HttpServlet {
         List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
         request.setAttribute("pvo", pvo);
         request.setAttribute("enrollStu", enrollStu);
-        System.out.println(enrollStu);
         request.getRequestDispatcher("jsp/grade/enrollStu.jsp").forward(request, response);
     }
 }

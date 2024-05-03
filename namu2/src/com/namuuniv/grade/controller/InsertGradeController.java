@@ -28,7 +28,7 @@ public class InsertGradeController extends HttpServlet {
 		double exScore = Double.parseDouble(request.getParameter("exScore"));
 		String rate = (String)request.getParameter("rate");
 		
-		EnrollStuVO evo = (EnrollStuVO)session.getAttribute("remStuSub");
+		EnrollStuVO evo = (EnrollStuVO)request.getAttribute("remStuSub");
 		int stuId = evo.getStuId();
 		int subId = evo.getSubId();
 		

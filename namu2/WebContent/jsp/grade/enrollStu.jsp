@@ -35,15 +35,33 @@
         		<div class="main">
         		<%
 	        	String resInsert = (String)session.getAttribute("resInsert");
-	        	if (resInsert == null) {
+	        	String nextPage = (String)session.getAttribute("nextPage");
+				nextPage = "nextPage";
+				session.setAttribute("nextPage", nextPage);
+				if(resInsert == null && nextPage != null){
 	        		String subName = (String)request.getParameter("subName");
 		            int year = Integer.parseInt(request.getParameter("year"));
 		            int semester = Integer.parseInt(request.getParameter("semester"));
+	        		int subId = Integer.parseInt(request.getParameter("subId"));
+	        		//int year = (Integer)session.getAttribute("year");
+	        		//int semester = (Integer)session.getAttribute("semester");
+	        		//String subName = (String)session.getAttribute("subName");
+	        		//session.setAttribute("subName", null);
+	        		request.setAttribute("subId", subId);
+		            request.setAttribute("subName", subName);
+		            request.setAttribute("year", year);
+		            request.setAttribute("semester", semester); 
+	        		
         		%>
 	        		<div class="subTitle"><%=year%> - <%=semester%> <%=subName%></div>
 	        	<%
 	        	} else {
-	        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
+	        		EnrollStuVO vo = (EnrollStuVO)request.getAttribute("remStuSub");
+	        		request.setAttribute("remStuSub", vo);
+	        		String subName = (String)request.getParameter("subName");
+		            int year = Integer.parseInt(request.getParameter("year"));
+		            int semester = Integer.parseInt(request.getParameter("semester"));
+	        		int subId = Integer.parseInt(request.getParameter("subId"));
         		%>
         			<div class="subTitle"><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
         		<%
@@ -112,6 +130,7 @@
 								<span class="disable">&laquo;</span>
 							</c:if>
 							<c:if test="{pvo.beginPage != 1}">
+								
 								<a href="enrollStu?cPage=${pvo.beginPage - 1}">&laquo;</a>
 							</c:if>
 								<c:if test="${pvo.nowBlock == 1}">
