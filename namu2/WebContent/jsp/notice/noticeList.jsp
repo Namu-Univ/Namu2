@@ -12,6 +12,7 @@
 <body>
 <jsp:include page="../../css/frameCss.jsp"/>
 <jsp:include page="../../css/noticeListCss.jsp"/>
+<jsp:include page="../../css/btnCss.jsp"/>
 <jsp:include page="../../partials/navTop/navTop.jsp"/>
 	<div class="mid">
 	<jsp:include page="../../partials/sideNav/sideNav_notice.jsp"/>
@@ -73,7 +74,7 @@
 					</td>
 					<td>
 						<c:if test="${isStaff }">
-							<button class="button" onclick="location.href='noticeWrite'">글작성</button>
+							<button class="noticebtn" onclick="location.href='noticeWrite'">글작성</button>
 						</c:if>
 					</td>
 				</tr>
