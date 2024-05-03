@@ -1,4 +1,3 @@
-<%@page import="com.namuuniv.vo.UsersVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>
@@ -23,32 +22,42 @@
 	}
 	tr { height: 40px; }
 	
-<%
-UsersVO user = (UsersVO) session.getAttribute("user");
-String role = user.getRole();
-%><%
-if (role.equals("professor")) {
-%>
-
-	tbody tr:hover { 
-		color: #349525; 
-		cursor: pointer;
-	}
-	
-<%
-}
-%>
 	
 	tfoot td {
 		border: none; 
+	}
+	
+	.subTitle {
+		font-size: 23px;
+	}
+	
+	hr {
+		width: 500px;
+		height: 2px;
+		background-color: #BBBBBB;
+		border: 0;
+		float: left;
 	}
 	
 	.year { width: 60px; }
 	.semester { width: 40px; }
 	.deptName { width: 150px }
 	.subName { width: 250px; }
-	.rom { width: 100px; }
+	.room { width: 100px; }
 	.grade { width: 60px; }
+	
+	.register {
+		width: 40px;
+		height: 25px;
+		color: #FFFFFF;
+		background: #349525;
+		border: none;
+		border-radius: 3px;		
+	}
+	.register:hover {
+		cursor: pointer;
+		background: #4CA844;
+	}
 	
 	.paging {
 		margin-top: 20px;

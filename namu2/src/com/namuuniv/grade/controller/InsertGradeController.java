@@ -40,8 +40,7 @@ public class InsertGradeController extends HttpServlet {
 		vo.setFinExam(fin);
 		vo.setExScore(exScore);
 		vo.setRate(rate);
-		
-		System.out.println(vo);
+
 		if (user != null) {
 			
 			if(role.equals("professor")) {

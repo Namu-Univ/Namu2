@@ -48,7 +48,6 @@ public class SubjectController extends HttpServlet {
 				List<ProSubjectVO> proSub = GradeDAO.proSubList(pvo.getBegin(), pvo.getEnd(), id);
 				request.setAttribute("pvo", pvo);
 				request.setAttribute("proSub", proSub);
-				System.out.println(proSub);
 				request.getRequestDispatcher("jsp/grade/subject.jsp").forward(request, response);
 
 			}
@@ -75,7 +74,6 @@ public class SubjectController extends HttpServlet {
 				List<EnrollStuVO> stuSub = GradeDAO.stuSubList(vo);
 				request.setAttribute("pvo", pvo);
 				request.setAttribute("stuSub", stuSub);
-				System.out.println(stuSub);
 				request.getRequestDispatcher("jsp/grade/subject.jsp").forward(request, response);
 			}
 		} else {

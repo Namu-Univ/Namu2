@@ -82,7 +82,10 @@ button {
 	border-radius: 15px;
 	border:none;
 }
-
+button:hover {
+	background: #4CA844;
+	cursor: pointer;
+}
 errorMsg {
 	top: 500px;
 }

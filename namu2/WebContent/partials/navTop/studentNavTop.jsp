@@ -1,6 +1,14 @@
+<%@page import="com.namuuniv.vo.StudentVO"%>
+<%@page import="com.namuuniv.vo.UsersVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+UsersVO user = (UsersVO) session.getAttribute("user");
+String role = user.getRole();
+StudentVO vo = (StudentVO)session.getAttribute("vo");
+%>
 <div class="top">
+	<a>[&nbsp학생&nbsp] &nbsp <%=vo.getName()%>님</a>
 	<a href="logout" class="menu-item">로그아웃</a>
 </div>
 <div class="nav">

@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>성적 입력</title>
 <jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/infoGradeCss.jsp"/>
 </head>
 <script>
 	function calcExScore() {
@@ -36,44 +37,69 @@
         	<%
 				EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
         	%>
-        		<div>
+        		<div class="subTitle">
 					<%=vo.getYear() %> - <%=vo.getSemester() %> <%=vo.getSubName() %>
         		</div>
-	        	<div>
-	        		학번 <%=vo.getStuId()%>
-	        	</div>
-	        	<div>
-	        		이름 <%=vo.getStuName() %> 
-	        	</div>		
+        		<hr>		
 				<form action="insertGrade" method="POST">
-		            <label for="absent">결석</label>
-					<input type="number" id="absent" name="absent" min="0" max="15" step="1" value="0">
-					
-		            <label for="mid">중간고사</label>
-					<input type="number" id="mid" name="mid" min="0" max="100" step="1" value="0">
-					
-					<label for="fin">기말고사</label>
-					<input type="number" id="fin" name="fin" min="0" max="100" step="1" value="0">
-				
-					<label for="exScore">환산점수</label>
-					<input type="text" id="exScore" name="exScore" value="0" readonly="readonly">
-					<button type="button" onclick="calcExScore()">
-						환산
-					</button>
-					<select id="rate" name="rate">
-						<option value="A+">A+</option>
-						<option value="A">A</option>
-						<option value="B+">B+</option>
-						<option value="B">B</option>
-						<option value="C+">C+</option>
-						<option value="C">C</option>
-						<option value="D+">D+</option>
-						<option value="D">D</option>
-						<option value="F">F</option>
-					</select>
-	
-		            <input type="submit" value="완료">
+				    <table>
+				    	<thead>
+					    	<tr>
+					    		<td class="left">학번</td>
+					    		<td class="middle"><%=vo.getStuId()%></td>
+					    		<td class="right"></td>
+					    	</tr>
+				    	</thead>
+				    	<tbody>
+					    	<tr>
+					    		<td>이름</td>
+					    		<td><%=vo.getStuName() %> </td>
+					    	</tr>
+					        <tr>
+					            <td><label for="absent">결석</label></td>
+					            <td><input type="number" id="absent" name="absent" min="0" max="15" step="1" value="0"></td>
+					        </tr>
+					        <tr>
+					            <td><label for="mid">중간고사</label></td>
+					            <td><input type="number" id="mid" name="mid" min="0" max="100" step="1" value="0"></td>
+					        </tr>
+					        <tr>
+					            <td><label for="fin">기말고사</label></td>
+					            <td><input type="number" id="fin" name="fin" min="0" max="100" step="1" value="0"></td>
+					        </tr>
+					        <tr class="empty"></tr>
+					        <tr>
+					            <td><label for="exScore">환산점수</label></td>
+					            <td><input type="text" id="exScore" name="exScore" value="0" readonly="readonly"></td>
+					            <td><button type="button" onclick="calcExScore()">환산</button></td>
+					        </tr>
+					        <tr>
+					            <td>학점</td>
+					            <td>
+					                <select id="rate" name="rate">
+					                    <option value="A+">A+</option>
+					                    <option value="A">A</option>
+					                    <option value="B+">B+</option>
+					                    <option value="B">B</option>
+					                    <option value="C+">C+</option>
+					                    <option value="C">C</option>
+					                    <option value="D+">D+</option>
+					                    <option value="D">D</option>
+					                    <option value="F">F</option>
+					                </select>
+					            </td>
+					        </tr>
+				    	</tbody>
+				    	<tfoot>
+					    	<tr>
+					    		<td></td>
+					            <td><input type="submit" value="완료" class="submit"></td>
+					        </tr>
+				    	</tfoot>
+				       
+				    </table>
 				</form>
+
 			</div>
 	</div>
 </body>

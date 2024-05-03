@@ -25,8 +25,7 @@ public class InfoGradeController extends HttpServlet {
 		int subId = (Integer)session.getAttribute("subId");
 		String subName = (String)session.getAttribute("subName");
 		int year = (Integer)session.getAttribute("year");
-		int semester = (Integer)session.getAttribute("semester");
-		
+		int semester = (Integer)session.getAttribute("semester");	
 		
 		EnrollStuVO vo = new EnrollStuVO();
 		vo.setSubId(subId);

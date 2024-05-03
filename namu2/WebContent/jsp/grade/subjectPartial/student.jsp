@@ -1,19 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<style>
-	table {
-		width: 700px;
-		margin: 30px auto 0; /* 상 좌우 하 */
-		border: 1px solid #349525;
-		border-collapse: collapse;
-		text-align: center;
-	}
-	
-</style>
+<jsp:include page="../../../css/subjectCss.jsp"/>
 <div class="maintop">내 강의</div>
 	<div class="main">
-		<table border="1">
+		<table>
 			<thead>
 				<tr>
 					<th>번호</th>
