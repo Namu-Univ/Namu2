@@ -12,6 +12,6 @@
         <a href="mypage">내정보</a>
         <a href="SearchStudent">등록/조회</a>
         <a href="eduStatus">학적관리</a>
-        <a href="#">공지사항</a>
+        <a href="noticeList">공지사항</a>
     </div>
 </div>
