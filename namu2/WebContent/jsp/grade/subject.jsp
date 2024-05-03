@@ -15,27 +15,31 @@
 UsersVO user = (UsersVO) session.getAttribute("user");
 String role = user.getRole();
 %>
-<jsp:include page="../../partials/ProNavTop.jsp"></jsp:include>
-    <div class="mid">
-    <!-- Side navigation -->
-		<div class="sidenav">
-		    <a href="subject">내 강의</a>
-		</div>
-        <!-- Page content -->
-        <div class="main">
-
 <%
 	if (role.equals("student")) {
 %>
-	<jsp:include page="subjectPartial/student.jsp"/>
+	<jsp:include page="../../partials/navTop/studentNavTop.jsp"/>
 <% 
 	} else if (role.equals("professor")) {
 %>
-	<jsp:include page="subjectPartial/professor.jsp"/>
+	<jsp:include page="../../partials/navTop/professorNavTop.jsp"/>
 <%
 	}
 %>
-		</div>
+    <div class="mid">
+		<jsp:include page="../../partials/sideNav/sideNav_myLecture.jsp"/>
+			<%
+				if (role.equals("student")) {
+			%>
+				<jsp:include page="subjectPartial/student.jsp"/>
+			<% 
+				} else if (role.equals("professor")) {
+			%>
+				<jsp:include page="subjectPartial/professor.jsp"/>
+			<%
+				}
+			%>
+
 	</div>
 </body>
 </html>

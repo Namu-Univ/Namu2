@@ -10,7 +10,7 @@
     <div class="topnav">
         <a href="mypage">내정보</a>
         <a href="StudentSemesterOff">휴학신청</a>
-        <a href="#">성적조회</a>
+        <a href="subject">성적조회</a>
         <a href="noticeList">공지사항</a>
     </div>
 </div>
