@@ -10,7 +10,7 @@
     </div>
     <div class="topnav">
         <a href="mypage">내정보</a>
-        <a href="#">강의</a>
+        <a href="subject">강의</a>
         <a href="noticeList">공지사항</a>
     </div>
 </div>

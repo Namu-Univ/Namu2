@@ -25,33 +25,29 @@
 	    }
 	}
 </script>
-	
 <body>
 
-<jsp:include page="../../partials/ProNavTop.jsp"></jsp:include>
+<jsp:include page="../../partials/navTop/professorNavTop.jsp"></jsp:include>
     <div class="mid">
-    <!-- Side navigation -->
-		<div class="sidenav">
-		    <a href="subject">내 강의</a>
-		</div>
-        <!-- Page content -->
-        <div class="main">
-        	<%
-        	String resInsert = (String)session.getAttribute("resInsert");
-        	if (resInsert == null) {
-        		String subName = (String)request.getParameter("subName");
-	            int year = Integer.parseInt(request.getParameter("year"));
-	            int semester = Integer.parseInt(request.getParameter("semester"));
-        	%>
+		<jsp:include page="../../partials/sideNav/sideNav_myLecture.jsp"/>
+			<div class="maintop">수강 중인 학생</div>
+        		<div class="main">
+        		<%
+	        	String resInsert = (String)session.getAttribute("resInsert");
+	        	if (resInsert == null) {
+	        		String subName = (String)request.getParameter("subName");
+		            int year = Integer.parseInt(request.getParameter("year"));
+		            int semester = Integer.parseInt(request.getParameter("semester"));
+        		%>
 	        		<div><%=year%> - <%=semester%> <%=subName%></div>
-	        <%
-        	} else {
-        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
+	        	<%
+	        	} else {
+	        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
         		%>
         			<div><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
         		<%
-        	}
-        	%>
+        		}
+        		%>
         	
 			<table border="1">
 				<thead>
@@ -105,7 +101,6 @@
 					        </td>
 					    </tr>
 					</c:forEach>
-
 				</tbody>
 				<tfoot>
 					<tr>
