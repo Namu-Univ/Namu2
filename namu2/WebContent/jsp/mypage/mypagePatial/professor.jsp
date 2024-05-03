@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div>
+<div style="margin: 0px auto; border: solid 1px;" id="professorStatusLeft">
 	<div>ID</div>
 	<div>이름</div>
 	<div>생년월일</div>
@@ -11,7 +11,7 @@
 	<div>부서</div>
 </div>
                 
-<div>
+<div style="margin: 0px auto; border: solid 1px;" id="professorStatusRight">
 	<div>${vo.id}</div>
 	<div>${vo.name}</div>
 	<div>${vo.birthDate}</div>

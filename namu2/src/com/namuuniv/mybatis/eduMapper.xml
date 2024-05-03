@@ -7,6 +7,7 @@
 	<select id="allList" resultType="EduStatusVO">
 		SELECT *
 		FROM STU_STA
+		ORDER BY REPORING_DATE DESC
 	</select>
 
 	<select id="selectOne" resultType="EduStatusVO">
