@@ -16,12 +16,14 @@
             box-sizing: border-box;
         }
     </style>     
+<jsp:include page="../../css/frameCss.jsp" />
 </head>
 <body>
     <div>
 <jsp:include page="../../partials/navTop/navTop.jsp"/>
-        <div class="mid">
+<jsp:include page="../../css/mypageCSS.jsp" />
         <jsp:include page="../../partials/sideNav/sideNav_mypage.jsp"/>    
+        <div class="mid">
             <div class="maintop">정보수정</div>
             <!-- Page content -->
             <div class="main">
