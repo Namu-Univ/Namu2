@@ -8,8 +8,8 @@
 <title>교직원 등록</title>
 </head>
 <body>
-<jsp:include page="../../css/registrationCss.jsp"/>
 <jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/registrationCss.jsp"/>
 	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 		<div class="mid">
 			<jsp:include page="../../partials/sideNav/sideNav_staffSearch.jsp"/>
