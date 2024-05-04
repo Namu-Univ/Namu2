@@ -19,7 +19,7 @@
 			</thead>
 			<tbody>
 			    <c:choose>
-			        <c:when test="${stuSub != 'Null' && not empty stuSub}">
+			        <c:when test="${stuSub != 'null' && not empty stuSub}">
 			            <c:forEach items="${stuSub}" var="stuSub">
 			                <tr>
 			                    <td>${stuSub.idx}</td>

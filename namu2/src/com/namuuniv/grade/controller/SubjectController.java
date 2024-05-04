@@ -30,6 +30,9 @@ public class SubjectController extends HttpServlet {
 			String role = user.getRole();
 			
 			if(role.equals("professor")) {
+				session.removeAttribute("remVo");
+				session.removeAttribute("nextPage");
+				session.removeAttribute("remStu");
 				// 현재 페이지 번호
 				String cPage = request.getParameter("cPage");
 				int currentPage = 1;
@@ -43,7 +46,7 @@ public class SubjectController extends HttpServlet {
 				pvo.setNowPage(currentPage);
 				pvo.setTotalRecord(GradeDAO.totalSubjectCount(id));
 				pvo.calculatePaging();
-
+				
 				// 현재 페이지에 맞는 강의 목록 조회
 				List<ProSubjectVO> proSub = GradeDAO.proSubList(pvo.getBegin(), pvo.getEnd(), id);
 				request.setAttribute("pvo", pvo);

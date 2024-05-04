@@ -35,20 +35,13 @@
         		<div class="main">
         		<%
 	        	String resInsert = (String)session.getAttribute("resInsert");
-	        	if (resInsert == null) {
-	        		String subName = (String)request.getParameter("subName");
-		            int year = Integer.parseInt(request.getParameter("year"));
-		            int semester = Integer.parseInt(request.getParameter("semester"));
-        		%>
-	        		<div class="subTitle"><%=year%> - <%=semester%> <%=subName%></div>
-	        	<%
-	        	} else {
-	        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
+	        	String nextPage = (String)session.getAttribute("nextPage");
+				nextPage = "nextPage";
+				session.setAttribute("nextPage", nextPage);
+				
+	        	EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remVo");
         		%>
         			<div class="subTitle"><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
-        		<%
-        		}
-        		%>
         		<hr>
         	
 			<table>
@@ -112,6 +105,7 @@
 								<span class="disable">&laquo;</span>
 							</c:if>
 							<c:if test="{pvo.beginPage != 1}">
+								
 								<a href="enrollStu?cPage=${pvo.beginPage - 1}">&laquo;</a>
 							</c:if>
 								<c:if test="${pvo.nowBlock == 1}">
