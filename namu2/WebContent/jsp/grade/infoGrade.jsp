@@ -35,7 +35,7 @@
 			<div class="maintop">성적 입력</div>
         		<div class="main">
         	<%
-				EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
+				EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStu");
         	%>
         		<div class="subTitle">
 					<%=vo.getYear() %> - <%=vo.getSemester() %> <%=vo.getSubName() %>

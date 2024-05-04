@@ -55,53 +55,76 @@ public class EnrollStudentController extends HttpServlet {
         int semester = 0;
         String nextPage = (String)session.getAttribute("nextPage");
         if (!isRedirect && nextPage == null) {
+        	//성적조회로 페이지 처음 이동했을 시
         	subId = Integer.parseInt(request.getParameter("subId"));
-            subName = request.getParameter("subName");
+            subName = (String)request.getParameter("subName");
             year = Integer.parseInt(request.getParameter("year"));
-            semester = Integer.parseInt(request.getParameter("semester"));
-            request.setAttribute("subId", subId);
-            request.setAttribute("subName", subName);
-            request.setAttribute("year", year);
-            request.setAttribute("semester", semester);       
+            semester = Integer.parseInt(request.getParameter("semester")); 
+            EnrollStuVO remVo = new EnrollStuVO();
+            remVo.setSubId(subId);
+            remVo.setSubName(subName);
+            remVo.setYear(year);
+            remVo.setSemester(semester);
+            session.setAttribute("remVo", remVo);
+
+            // 현재 페이지 번호 처리
+            String cPage = request.getParameter("cPage");
+            int currentPage = 1;
+            if (cPage == null || cPage.trim().isEmpty()) {
+                cPage = "1";
+            }
+            currentPage = Integer.parseInt(cPage);
+            
+            EnrollStuVO vo = new EnrollStuVO();
+            vo.setSubId(subId);
+            vo.setSubName(subName);
+            vo.setUserId(userId);
+            
+            // 페이징 처리
+            GradePagingVO pvo = new GradePagingVO();
+            pvo.setNowPage(currentPage);
+            pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
+            pvo.calculatePaging();
+            vo.setBegin(pvo.getBegin());
+            vo.setEnd(pvo.getEnd());
+            
+            // 데이터 조회 처리
+            List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
+            request.setAttribute("pvo", pvo);
+            request.setAttribute("vo", vo);
+            request.setAttribute("enrollStu", enrollStu);
+  
         }
         if (!isRedirect || isRedirect && nextPage != null) {
-        	subId = Integer.parseInt(request.getParameter("subId"));
-        	subName = (String) request.getAttribute("subName");
-        	year = Integer.parseInt(request.getParameter("year"));
-        	semester = Integer.parseInt(request.getParameter("semester"));
-            System.out.println(subName);
-            System.out.println(subId);
-            request.setAttribute("subId", subId);
-            request.setAttribute("subName", subName);
-            request.setAttribute("year", year);
-            request.setAttribute("semester", semester); 
+        	EnrollStuVO remVo = (EnrollStuVO)session.getAttribute("remVo");
+
+            // 현재 페이지 번호 처리
+            String cPage = request.getParameter("cPage");
+            int currentPage = 1;
+            if (cPage == null || cPage.trim().isEmpty()) {
+                cPage = "1";
+            }
+            currentPage = Integer.parseInt(cPage);
+            
+            EnrollStuVO vo = new EnrollStuVO();
+            vo.setSubId(remVo.getSubId());
+            vo.setSubName(remVo.getSubName());
+            vo.setUserId(userId);
+            
+            // 페이징 처리
+            GradePagingVO pvo = new GradePagingVO();
+            pvo.setNowPage(currentPage);
+            pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
+            pvo.calculatePaging();
+            vo.setBegin(pvo.getBegin());
+            vo.setEnd(pvo.getEnd());
+
+            // 데이터 조회 처리
+            List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
+            request.setAttribute("pvo", pvo);
+            request.setAttribute("vo", vo);
+            request.setAttribute("enrollStu", enrollStu);
         }
-        
-        // 현재 페이지 번호 처리
-        String cPage = request.getParameter("cPage");
-        int currentPage = 1;
-        if (cPage == null || cPage.trim().isEmpty()) {
-            cPage = "1";
-        }
-        currentPage = Integer.parseInt(cPage);
-        
-        EnrollStuVO vo = new EnrollStuVO();
-        vo.setUserId(userId);
-        vo.setSubName(subName);
-        
-        // 페이징 처리
-        GradePagingVO pvo = new GradePagingVO();
-        pvo.setNowPage(currentPage);
-        pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
-        pvo.calculatePaging();
-        
-        vo.setBegin(pvo.getBegin());
-        vo.setEnd(pvo.getEnd());
-        
-        // 데이터 조회 처리
-        List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
-        request.setAttribute("pvo", pvo);
-        request.setAttribute("enrollStu", enrollStu);
         request.getRequestDispatcher("jsp/grade/enrollStu.jsp").forward(request, response);
     }
 }

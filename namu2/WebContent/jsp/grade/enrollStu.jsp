@@ -38,35 +38,10 @@
 	        	String nextPage = (String)session.getAttribute("nextPage");
 				nextPage = "nextPage";
 				session.setAttribute("nextPage", nextPage);
-				if(resInsert == null && nextPage != null){
-	        		String subName = (String)request.getParameter("subName");
-		            int year = Integer.parseInt(request.getParameter("year"));
-		            int semester = Integer.parseInt(request.getParameter("semester"));
-	        		int subId = Integer.parseInt(request.getParameter("subId"));
-	        		//int year = (Integer)session.getAttribute("year");
-	        		//int semester = (Integer)session.getAttribute("semester");
-	        		//String subName = (String)session.getAttribute("subName");
-	        		//session.setAttribute("subName", null);
-	        		request.setAttribute("subId", subId);
-		            request.setAttribute("subName", subName);
-		            request.setAttribute("year", year);
-		            request.setAttribute("semester", semester); 
-	        		
-        		%>
-	        		<div class="subTitle"><%=year%> - <%=semester%> <%=subName%></div>
-	        	<%
-	        	} else {
-	        		EnrollStuVO vo = (EnrollStuVO)request.getAttribute("remStuSub");
-	        		request.setAttribute("remStuSub", vo);
-	        		String subName = (String)request.getParameter("subName");
-		            int year = Integer.parseInt(request.getParameter("year"));
-		            int semester = Integer.parseInt(request.getParameter("semester"));
-	        		int subId = Integer.parseInt(request.getParameter("subId"));
+				
+	        	EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remVo");
         		%>
         			<div class="subTitle"><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
-        		<%
-        		}
-        		%>
         		<hr>
         	
 			<table>
