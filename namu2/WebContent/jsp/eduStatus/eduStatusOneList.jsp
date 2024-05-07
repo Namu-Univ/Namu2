@@ -79,67 +79,66 @@ header {
 	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 	<div class="mid">
 		<jsp:include page="../../partials/sideNav/sideNav_staffEduStatus.jsp"/>
+		<div class="maintop">휴학 신청 내역</div>
+		<div class="main">
 		<!-- 구분선 추가 -->
-		<table>
-			<tr>
-				<th>항목</th>
-				<th>내용</th>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>${absence.idx }</td>
-			</tr>
-			<tr>
-				<td>학번</td>
-				<td>${absence.id }</td>
-			</tr>
-			<tr>
-				<td>상태</td>
-				<td>${absence.status }</td>
-			</tr>
-			<tr>
-				<td>시작 연도</td>
-				<td>${absence.startYear }</td>
-			</tr>
-			<tr>
-				<td>시작 학기</td>
-				<td>${absence.startSemester }</td>
-			</tr>
-			<tr>
-				<td>종료 연도</td>
-				<td>${absence.finishYear }</td>
-			</tr>
-			<tr>
-				<td>종료 학기</td>
-				<td>${absence.finishSemester }</td>
-			</tr>
-			<tr>
-				<td>승인 상태</td>
-				<td>${absence.approvalStatus }</td>
-			</tr>
-			<tr>
-				<td>신청일</td>
-				<td>${absence.reporingDate }</td>
-			</tr>
-		</table>
-		<%
-		System.out.println(request.getParameter("idx"));
-		EduStatusVO evo = EduStatusDAO.eduStatusSelOne(Integer.parseInt(request.getParameter("idx")));
-		String status = evo.getApprovalStatus();
-		%>
-		<%
-		if (status.equals("대기")) {
-		%>
-		<!-- 버튼을 테이블 아래쪽에 배치 -->
-		<div class="button-container">
-			<button class="checkData" type="button"
-				onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=승인'">승인</button>
-			<button class="checkData" type="button"
-				onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=대기'">반려</button>
+			<table>
+				<tr>
+					<th>항목</th>
+					<th>내용</th>
+				</tr>
+				<tr>
+					<td>학번</td>
+					<td>${absence.id }</td>
+				</tr>
+				<tr>
+					<td>상태</td>
+					<td>${absence.status }</td>
+				</tr>
+				<tr>
+					<td>시작 연도</td>
+					<td>${absence.startYear }</td>
+				</tr>
+				<tr>
+					<td>시작 학기</td>
+					<td>${absence.startSemester }</td>
+				</tr>
+				<tr>
+					<td>종료 연도</td>
+					<td>${absence.finishYear }</td>
+				</tr>
+				<tr>
+					<td>종료 학기</td>
+					<td>${absence.finishSemester }</td>
+				</tr>
+				<tr>
+					<td>승인 상태</td>
+					<td>${absence.approvalStatus }</td>
+				</tr>
+				<tr>
+					<td>신청일</td>
+					<td>${absence.reporingDate }</td>
+				</tr>
+			</table>
+			<%
+			System.out.println(request.getParameter("idx"));
+			EduStatusVO evo = EduStatusDAO.eduStatusSelOne(Integer.parseInt(request.getParameter("idx")));
+			String status = evo.getApprovalStatus();
+			%>
+			<%
+			if (status.equals("대기")) {
+			%>
+			<!-- 버튼을 테이블 아래쪽에 배치 -->
+			<div class="button-container">
+				<button class="checkData" type="button"
+					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=승인'">승인</button>
+				<button class="checkData" type="button"
+					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=대기'">반려</button>
+			</div>
+			<%
+			}
+			%>
 		</div>
-		<%
-		}
-		%>
 	</div>
 	<!-- .mid 닫기 -->
 </body>
