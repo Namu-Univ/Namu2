@@ -132,10 +132,8 @@
 	<update id="updateStaff" parameterType="StaffVO">
 		UPDATE STAFF
 		SET NAME = #{name},
-		BIRTH_DATE = #{birthDate},
 		ADDRESS = #{address},
-		TEL = #{tel},
-		DEPT = #{dept}
+		TEL = #{tel}
 		WHERE ID = #{id}
 	</update>
 	
@@ -143,7 +141,6 @@
 	<update id="updateProfessor" parameterType="ProfessorVO">
 		UPDATE PROFESSOR
 		SET NAME = #{name},
-		BIRTH_DATE = #{birthDate},
 		ADDRESS = #{address},
 		TEL = #{tel}
 		WHERE ID = #{id}

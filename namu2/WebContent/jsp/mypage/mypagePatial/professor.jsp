@@ -19,7 +19,7 @@
 	<div>${vo.address}</div>
 	<div>${vo.tel}</div>
 	<div>${vo.hireDate}</div>
-	<div>${vo.deptId}</div>
+	<div>${vo.deptName}</div>
 	<!-- 수정 버튼 -->
 	<div>
 	    <a href="editMyPage">수정</a>

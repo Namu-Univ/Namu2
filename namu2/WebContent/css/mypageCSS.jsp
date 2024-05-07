@@ -27,7 +27,7 @@
     display: inline-block; /* 수정 버튼을 인라인 블록 요소로 만들어 줄을 차지하도록 설정 */
     margin-top: 10px; /* 수정 버튼과 다음 박스칸 사이 간격 설정 */
     float: right; /* 우측으로 이동시킴 */
-    background-color: #007bff; /* 배경색 */
+    background-color: grey; /* 버튼 배경색 */
     color: #fff; /* 글자색 */
     padding: 5px 10px; /* 안쪽 여백 */
     border: none; /* 테두리 제거 */
