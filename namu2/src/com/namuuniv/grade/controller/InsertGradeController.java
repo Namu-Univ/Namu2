@@ -28,7 +28,7 @@ public class InsertGradeController extends HttpServlet {
 		double exScore = Double.parseDouble(request.getParameter("exScore"));
 		String rate = (String)request.getParameter("rate");
 		
-		EnrollStuVO evo = (EnrollStuVO)session.getAttribute("remStuSub");
+		EnrollStuVO evo = (EnrollStuVO)session.getAttribute("remStu");
 		int stuId = evo.getStuId();
 		int subId = evo.getSubId();
 		
@@ -40,8 +40,7 @@ public class InsertGradeController extends HttpServlet {
 		vo.setFinExam(fin);
 		vo.setExScore(exScore);
 		vo.setRate(rate);
-		
-		System.out.println(vo);
+
 		if (user != null) {
 			
 			if(role.equals("professor")) {

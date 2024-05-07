@@ -7,10 +7,11 @@ body {
 }
 
 .container {
-
 	position: relative;
 	display: flex;
     justify-content: center;
+    align-items: center; /* 추가: 수직 중앙 정렬을 위해 */
+    height: 100vh; /* 추가: 브라우저 창의 전체 높이 */
 }
 
 #loginForm {
@@ -22,16 +23,13 @@ body {
 	height: 673px;
 	background: #FFFFFF;
 	border-radius: 20px;
-	margin: 0 auto;
-	margin-right: auto;
 }
-
 
 #logo {
 	position: absolute;
 	display: flex;
 	left: 50%;
-    transform: translateX(-50%);
+	transform: translateX(-50%);
   	justify-content: center;
   	margin-top: 100px;
 }
@@ -41,33 +39,23 @@ body {
 	font-weight: bold;
 }
 
-
-#id {
+#id, #password {
 	position: absolute;
 	width: 326px;
 	height: 82px;
-	top: 250px;
 	left: 15%;
 	justify-content: center;
 	background: #D9D9D9;
 	border-radius: 15px;
 	border:none;
+}
+
+#id {
+	top: 250px;
 }
 
 #password {
-	position: absolute;
-	width: 326px;
-	height: 82px;
 	top: 350px;
-	left: 15%;
-	justify-content: center;
-	background: #D9D9D9;
-	border-radius: 15px;
-	border:none;
-}
-
-#login input::placeholder {
-	left: 20px;
 }
 
 button {
@@ -83,7 +71,14 @@ button {
 	border:none;
 }
 
-errorMsg {
-	top: 500px;
+button:hover {
+	background: #4CA844;
+	cursor: pointer;
 }
+
+#errorMsg {
+	margin-top: 550px;
+	text-align: center;
+}
+
 </style>

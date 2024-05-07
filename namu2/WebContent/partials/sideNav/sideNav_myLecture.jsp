@@ -10,15 +10,14 @@
 <!-- 내 강의 -->
 <div class="sidenav">
 	<div class="sidenavTitle"> 강의 </div>
-	<a href="#">내강의</a>
 <%
 	if (role.equals("student")) {
 %>
-	<a href="#">내강의</a>
+	<a href="subject">내강의</a>
 <% 
 	} else if (role.equals("professor")) {
 %>
-	<a href="#">내강의</a>
+	<a href="subject">내강의</a>
 <%
 	}
 %>
