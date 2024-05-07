@@ -26,7 +26,7 @@
 }
 
 .sidenav a:hover {
-	color: #0066ff;
+	color: #006600;
 }
 
 #mypageTop {

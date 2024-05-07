@@ -82,6 +82,7 @@ public class SearchUpdateDAO {
 	// 교직원 정보 수정
 	public static boolean updateStaff(StaffVO staff) {
 		try (SqlSession sqlSession = DBService.getFactory().openSession()) {
+			System.out.println(staff.toString());
 			int count = sqlSession.update("namu.updateStaff", staff);
 			if (count > 0) { // 0 이상일시 DB에 커밋
 				sqlSession.commit();
