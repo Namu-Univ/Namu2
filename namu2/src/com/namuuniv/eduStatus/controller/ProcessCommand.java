@@ -14,9 +14,9 @@ public class ProcessCommand implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String check = request.getParameter("check");
 		int idx = Integer.parseInt(request.getParameter("idx")); // 형변환
-		if (check.equals("승인")) {
+		if (check.equals("approve")) {
 			EduStatusDAO.approve(idx);
-		} else if (check.equals("반려")) {
+		} else if (check.equals("reject")) {
 			EduStatusDAO.reject(idx);
 		}
 		return "jsp/eduStatus/updateOk.jsp";
