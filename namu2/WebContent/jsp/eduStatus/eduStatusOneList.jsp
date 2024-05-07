@@ -96,20 +96,12 @@ header {
 					<td>${absence.status }</td>
 				</tr>
 				<tr>
-					<td>시작 연도</td>
-					<td>${absence.startYear }</td>
-				</tr>
-				<tr>
 					<td>시작 학기</td>
-					<td>${absence.startSemester }</td>
-				</tr>
-				<tr>
-					<td>종료 연도</td>
-					<td>${absence.finishYear }</td>
+					<td>${absence.startYear }-${absence.startSemester }</td>
 				</tr>
 				<tr>
 					<td>종료 학기</td>
-					<td>${absence.finishSemester }</td>
+					<td>${absence.finishYear }-${absence.finishSemester }</td>
 				</tr>
 				<tr>
 					<td>승인 상태</td>
