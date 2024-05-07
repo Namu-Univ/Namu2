@@ -26,7 +26,7 @@
 				<td><strong>조회수</strong>&nbsp;${notice.views}</td>
 			</tr>
 			<tr class="content-row">
-				<td colspan="4">${notice.content}</td>
+				<td colspan="4"><pre>${notice.content}</pre></td>
 			</tr>
 			<tr>
 				<td colspan="4" class="button">

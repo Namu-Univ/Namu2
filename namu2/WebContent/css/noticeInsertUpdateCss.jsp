@@ -3,7 +3,7 @@
 <style>
 	table {
 		width: 100%;
-		max-width: 800px;
+		max-width: 1000px;
 		height: 500px;
 		margin: 0 auto;
 		background: #fff;
