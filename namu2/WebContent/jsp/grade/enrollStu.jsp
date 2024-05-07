@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>수강중인 학생</title>
 <jsp:include page="../../css/frameCss.jsp"/>
+<jsp:include page="../../css/enrollStuCss.jsp"/>
 </head>
 <script>
 	function remStuId(stuId, stuName) {
@@ -25,35 +26,25 @@
 	    }
 	}
 </script>
-	
 <body>
 
-<jsp:include page="../../partials/ProNavTop.jsp"></jsp:include>
+<jsp:include page="../../partials/navTop/professorNavTop.jsp"></jsp:include>
     <div class="mid">
-    <!-- Side navigation -->
-		<div class="sidenav">
-		    <a href="subject">내 강의</a>
-		</div>
-        <!-- Page content -->
-        <div class="main">
-        	<%
-        	String resInsert = (String)session.getAttribute("resInsert");
-        	if (resInsert == null) {
-        		String subName = (String)request.getParameter("subName");
-	            int year = Integer.parseInt(request.getParameter("year"));
-	            int semester = Integer.parseInt(request.getParameter("semester"));
-        	%>
-	        		<div><%=year%> - <%=semester%> <%=subName%></div>
-	        <%
-        	} else {
-        		EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remStuSub");
-        		%>
-        			<div><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
+		<jsp:include page="../../partials/sideNav/sideNav_myLecture.jsp"/>
+			<div class="maintop">수강 중인 학생</div>
+        		<div class="main">
         		<%
-        	}
-        	%>
+	        	String resInsert = (String)session.getAttribute("resInsert");
+	        	String nextPage = (String)session.getAttribute("nextPage");
+				nextPage = "nextPage";
+				session.setAttribute("nextPage", nextPage);
+				
+	        	EnrollStuVO vo = (EnrollStuVO)session.getAttribute("remVo");
+        		%>
+        			<div class="subTitle"><%=vo.getYear()%> - <%=vo.getSemester()%> <%=vo.getSubName()%></div>
+        		<hr>
         	
-			<table border="1">
+			<table>
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -95,7 +86,7 @@
 						        <c:choose>
 							        <c:when test="${enrollStu.rate == null}">
 							        	<!-- 성적 존재하지 않을 시 -->
-							            <button onclick="remStuId('${enrollStu.stuId}', '${enrollStu.stuName}')">등록</button>
+							            <button class="register" onclick="remStuId('${enrollStu.stuId}', '${enrollStu.stuName}')">등록</button>
 							        </c:when>
 							        <c:otherwise>
 							           	<!-- 성적 존재 시-->
@@ -105,7 +96,6 @@
 					        </td>
 					    </tr>
 					</c:forEach>
-
 				</tbody>
 				<tfoot>
 					<tr>
@@ -115,6 +105,7 @@
 								<span class="disable">&laquo;</span>
 							</c:if>
 							<c:if test="{pvo.beginPage != 1}">
+								
 								<a href="enrollStu?cPage=${pvo.beginPage - 1}">&laquo;</a>
 							</c:if>
 								<c:if test="${pvo.nowBlock == 1}">

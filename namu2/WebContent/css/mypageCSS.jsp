@@ -36,7 +36,7 @@
 }
 
 .rectangle>div>div:last-child>a:hover {
-    background-color: #0056b3; /* 호버 시 배경색 변경 */
+    background-color: #349525; /* 호버 시 배경색 변경 */
 }
 
 #staffStatusLeft {

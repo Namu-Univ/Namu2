@@ -27,7 +27,6 @@ public class EnrollStudentController extends HttpServlet {
         	int userId = user.getId();
             if (role.equals("professor")) {
                 String resInsert = (String)session.getAttribute("resInsert");
-                System.out.println(resInsert);
                 if (resInsert == null) {
                 	// 성적 입력 전
 					processRequest(request, response, userId, false);
@@ -51,46 +50,81 @@ public class EnrollStudentController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response, int userId, boolean isRedirect) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String subName = null;
-        if (!isRedirect) {
-        	int subId = Integer.parseInt(request.getParameter("subId"));
-            subName = request.getParameter("subName");
-            int year = Integer.parseInt(request.getParameter("year"));
-            int semester = Integer.parseInt(request.getParameter("semester"));
+        int subId = 0;
+        int year = 0;
+        int semester = 0;
+        String nextPage = (String)session.getAttribute("nextPage");
+        if (!isRedirect && nextPage == null) {
+        	//성적조회로 페이지 처음 이동했을 시
+        	subId = Integer.parseInt(request.getParameter("subId"));
+            subName = (String)request.getParameter("subName");
+            year = Integer.parseInt(request.getParameter("year"));
+            semester = Integer.parseInt(request.getParameter("semester")); 
+            EnrollStuVO remVo = new EnrollStuVO();
+            remVo.setSubId(subId);
+            remVo.setSubName(subName);
+            remVo.setYear(year);
+            remVo.setSemester(semester);
+            session.setAttribute("remVo", remVo);
+
+            // 현재 페이지 번호 처리
+            String cPage = request.getParameter("cPage");
+            int currentPage = 1;
+            if (cPage == null || cPage.trim().isEmpty()) {
+                cPage = "1";
+            }
+            currentPage = Integer.parseInt(cPage);
             
-            session.setAttribute("subId", subId);
-            session.setAttribute("subName", subName);
-            session.setAttribute("year", year);
-            session.setAttribute("semester", semester);
-        } else {
-            subName = (String) session.getAttribute("subName");
+            EnrollStuVO vo = new EnrollStuVO();
+            vo.setSubId(subId);
+            vo.setSubName(subName);
+            vo.setUserId(userId);
+            
+            // 페이징 처리
+            GradePagingVO pvo = new GradePagingVO();
+            pvo.setNowPage(currentPage);
+            pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
+            pvo.calculatePaging();
+            vo.setBegin(pvo.getBegin());
+            vo.setEnd(pvo.getEnd());
+            
+            // 데이터 조회 처리
+            List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
+            request.setAttribute("pvo", pvo);
+            request.setAttribute("vo", vo);
+            request.setAttribute("enrollStu", enrollStu);
+  
         }
-        
-        // 현재 페이지 번호 처리
-        String cPage = request.getParameter("cPage");
-        int currentPage = 1;
-        if (cPage == null || cPage.trim().isEmpty()) {
-            cPage = "1";
+        if (!isRedirect || isRedirect && nextPage != null) {
+        	EnrollStuVO remVo = (EnrollStuVO)session.getAttribute("remVo");
+
+            // 현재 페이지 번호 처리
+            String cPage = request.getParameter("cPage");
+            int currentPage = 1;
+            if (cPage == null || cPage.trim().isEmpty()) {
+                cPage = "1";
+            }
+            currentPage = Integer.parseInt(cPage);
+            
+            EnrollStuVO vo = new EnrollStuVO();
+            vo.setSubId(remVo.getSubId());
+            vo.setSubName(remVo.getSubName());
+            vo.setUserId(userId);
+            
+            // 페이징 처리
+            GradePagingVO pvo = new GradePagingVO();
+            pvo.setNowPage(currentPage);
+            pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
+            pvo.calculatePaging();
+            vo.setBegin(pvo.getBegin());
+            vo.setEnd(pvo.getEnd());
+
+            // 데이터 조회 처리
+            List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
+            request.setAttribute("pvo", pvo);
+            request.setAttribute("vo", vo);
+            request.setAttribute("enrollStu", enrollStu);
         }
-        currentPage = Integer.parseInt(cPage);
-        
-        EnrollStuVO vo = new EnrollStuVO();
-        vo.setUserId(userId);
-        vo.setSubName(subName);
-        
-        // 페이징 처리
-        GradePagingVO pvo = new GradePagingVO();
-        pvo.setNowPage(currentPage);
-        pvo.setTotalRecord(GradeDAO.totalEnrollCount(vo));
-        pvo.calculatePaging();
-        
-        vo.setBegin(pvo.getBegin());
-        vo.setEnd(pvo.getEnd());
-        
-        // 데이터 조회 처리
-        List<EnrollStuVO> enrollStu = GradeDAO.enrollStuList(vo);
-        request.setAttribute("pvo", pvo);
-        request.setAttribute("enrollStu", enrollStu);
-        System.out.println(enrollStu);
         request.getRequestDispatcher("jsp/grade/enrollStu.jsp").forward(request, response);
     }
 }

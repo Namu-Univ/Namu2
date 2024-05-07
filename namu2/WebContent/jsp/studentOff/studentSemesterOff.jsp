@@ -11,7 +11,7 @@
 	.container {
 		margin: 30px auto 0;
 		border: 1px solid black;
-		width: 50%;
+		width: 65%;
 		text-align: center;
 	}
 	table {
@@ -47,7 +47,7 @@
 			<div class="main">
 				<div class="container">
 					<p id="title">휴학신청서</p>
-					<form action="../../StudentSemesterOff" method="post" >
+					<form action="StudentSemesterOff" method="post" >
 						<table>
 							<tr>
 								<td>이름</td>

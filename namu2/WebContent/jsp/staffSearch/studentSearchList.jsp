@@ -8,6 +8,7 @@
 <title>학생 조회</title>
 <jsp:include page="../../css/frameCss.jsp"/>
 <jsp:include page="../../css/tableCss.jsp"/>
+<jsp:include page="../../css/btnCss.jsp"/>
 <style>
 	form {
 		text-align: center;
@@ -23,11 +24,11 @@
 				<form action="SearchStudent" method="get">
 					<select name="idx">
 						<option value="0">이름</option>
-						<option value="1">교번</option>
+						<option value="1">학번</option>
 						<option value="2">전공</option>
 					</select>
 					<input type="text" name="keyword">
-					<input type="submit" value="검색">
+					<input class="searchbtn" type="submit" value="검색">
 				</form>
 				
 				<table border="1">
