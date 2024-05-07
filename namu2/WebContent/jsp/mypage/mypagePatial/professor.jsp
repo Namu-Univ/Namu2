@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div style="margin: 0px auto; border: solid 1px;" id="professorStatusLeft">
-	<div>ID</div>
+	<div>교번</div>
 	<div>이름</div>
 	<div>생년월일</div>
 	<div>성별</div>
 	<div>주소</div>
 	<div>전화번호</div>
 	<div>입사일</div>
-	<div>부서</div>
+	<div>학과</div>
 </div>
                 
 <div style="margin: 0px auto; border: solid 1px;" id="professorStatusRight">
