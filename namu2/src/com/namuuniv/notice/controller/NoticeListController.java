@@ -49,8 +49,6 @@ public class NoticeListController extends HttpServlet {
 		List<NoticeVO> list = NoticeDAO.noticeList(pvo.getBegin(), pvo.getEnd());
 		request.setAttribute("pvo", pvo);
 		request.setAttribute("list", list);
-		System.out.println(pvo);
-		System.out.println(list);
 		request.setAttribute("isStaff", ifStaff);
 		request.getRequestDispatcher("jsp/notice/noticeList.jsp").forward(request, response);
 	}

@@ -58,19 +58,16 @@ public class LoginController extends HttpServlet  {
 				session.setAttribute("student", student);
 				session.setAttribute("staff", null);
 				session.setAttribute("professor", null);
-				System.out.println(student.toString());
 			} else if ("staff".equals(userRole)) {
 				StaffVO staff = ProfileSearchDAO.staffOne(user.getId());
 				session.setAttribute("student", null);
 				session.setAttribute("staff", staff);
 				session.setAttribute("professor", null);
-				System.out.println(staff.toString());
 			} else if ("professor".equals(userRole)) {
 				ProfessorVO professor = ProfileSearchDAO.professorOne(user.getId());
 				session.setAttribute("student", null);
 				session.setAttribute("staff", null);
 				session.setAttribute("professor", professor);
-				System.out.println(professor.toString());
 			} else {
 				// 유저롤이 안맞을 경우 오류
 				errorMsg = "[오류] 관리자에게 연락바랍니다.";
