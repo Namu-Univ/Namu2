@@ -49,6 +49,8 @@
 		cursor: pointer;
 		display: inline-block;
 		font-weight: bold;
+		margin: 5 2px;
+		border-radius: 5px;
 	}
 	
 	input[type="submit"]:hover {
