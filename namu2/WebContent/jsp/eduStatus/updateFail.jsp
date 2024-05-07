@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>학생 휴학 신청 승인/반려 (승인페이지)</title>
+<title>학생 휴학 신청 승인/반려 (반려페이지)</title>
 </head>
 <script>
-	alert("처리 되었습니다.");
+	alert("반려 되었습니다.");
 	function go() {
-		location.href = "eduStatus?type=list";
+		location.href = "eduStatusList.jsp";
 	}
 	go();
 </script>

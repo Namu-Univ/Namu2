@@ -79,6 +79,8 @@ header {
 	<jsp:include page="../../partials/navTop/staffNavTop.jsp"/>
 	<div class="mid">
 		<jsp:include page="../../partials/sideNav/sideNav_staffEduStatus.jsp"/>
+		<div class="maintop">학적 관리</div>
+   	    <div class="main">
 		<!-- 구분선 추가 -->
 		<table>
 			<tr>
@@ -128,7 +130,7 @@ header {
 		String status = evo.getApprovalStatus();
 		%>
 		<%
-		if (status.equals("wait")) {
+		if (status.equals("대기")) {
 		%>
 		<!-- 버튼을 테이블 아래쪽에 배치 -->
 		<div class="button-container">
@@ -140,7 +142,7 @@ header {
 		<%
 		}
 		%>
-	</div>
-	<!-- .mid 닫기 -->
+    </div> <!-- .main 닫기 -->
+  </div> <!-- .mid 닫기 -->
 </body>
 </html>
