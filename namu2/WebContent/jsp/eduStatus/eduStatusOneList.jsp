@@ -123,9 +123,9 @@ header {
 			<!-- 버튼을 테이블 아래쪽에 배치 -->
 			<div class="button-container">
 				<button class="checkData" type="button"
-					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=승인'">승인</button>
+					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=approve'">승인</button>
 				<button class="checkData" type="button"
-					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=대기'">반려</button>
+					onClick="location.href='${pageContext.request.contextPath}/eduStatus?type=process&idx=${absence.idx}&check=reject'">반려</button>
 			</div>
 			<%
 			}
